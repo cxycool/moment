@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="asset/css/base.css" type="text/css" />
+    <link rel="stylesheet" href="asset/css/highlight.min.css" />
+    <!-- <script src="asset/js/bootstrap.min.js"></script> -->
+    <script src="asset/js/axios.min.js"></script>
+    <!-- <script src="asset/js/director.min.js"></script> -->
+    <script src="asset/js/marked.min.js"></script>
+    <script src="asset/js/dayjs.min.js"></script>
+    <script src="asset/js/zh-cn.min.js"></script>
+    <script src="src/config.js"></script>
+    <script src="asset/js/highlight.min.js"></script>
+    <script src="asset/js/better-scroll.min.js"></script>
+    <!-- <script src="asset/js/better-scroll-core.min.js"></script> -->
+    <!-- <script src="asset/js/better-scroll-pull-up.min.js"></script> -->
+    <script src="asset/js/vue.min.js"></script>
+    <!-- <script src="asset/js/vue-router-3.5.4.js"></script> -->
+    <!-- <script src="asset/js/vuex-3.6.2.js"></script> -->
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <nav class="header_nav">
+          <span class="blog_title">
+            <a :href="blog.blog_url">
+              <h2 class="blog_title_text" v-cloak>{{blog.blog_title}}</h2>
+            </a>
+          </span>
+          <div class="blog_author">
+            <a :href="blog.blog_pub_url" id="blog_author_url">
+              <img
+                :src="author.author_avatar_url"
+                id="blog_author_img"
+                :title="author.author_nickname"
+              />
+            </a>
+          </div>
+        </nav>
+      </header>
+      <div class="container" id="container">
+        <ul class="ul_postlist" id="ul_postlist">
+          <li class="li_postlist" v-for="post in postdata">
+            <div class="post_container">
+              <header class="post_header">
+                <a :href="blog.blog_url" aria-label="post_author">
+                  <div class="post_author">
+                    <img
+                      :src="post.avatar_url"
+                      class="post_author_img"
+                      :title="author.author_nickname"
+                    />
+                  </div>
+                </a>
+                <div class="post_info">
+                  <div class="post_info_content">
+                    <div class="post_info_author">
+                      <a :href="blog.blog_url" class="post_info_author_name"
+                        ><span :title="post.login" v-cloak
+                          >{{author.author_nickname}}</span
+                        >
+                      </a>
+                    </div>
+                    <div class="post_info_time">
+                      <a
+                        :title="daterealformat(post.created_at)"
+                        href="#/"
+                        class="post_info_time_text"
+                        v-cloak
+                      >
+                        {{dateformat(post.created_at)}}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </header>
+              <div class="post_main_content">
+                <div class="post_main_content_text">
+                  <div class="post_main_content_text_title" v-cloak>
+                    {{post.title}}
+                  </div>
+                  <div
+                    class="post_main_content_text_detail"
+                    v-html="post.body"
+                  ></div>
+                </div>
+                <div class="post_main_content_picture" v-if="post.isshowpic">
+                  <div class="post_main_content_picture_container">
+                    <div
+                      class="post_main_content_picture_item post_main_content_picture_c1"
+                    >
+                      <div class="post_main_content_picture_item_container">
+                        <div
+                          class="post_main_content_picture_item_container_slot"
+                        >
+                          <img
+                            :src="post.avatar_url"
+                            class="post_main_content_picture_item_container_img"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="post_main_content_bottom"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <transition name="aside-menu">
+        <div class="aside_menu" id="aside_menu" v-if="isShowbacktop">
+          <transition name="aside-menu-mode">
+            <div
+              class="aside_menu_cpn aside_menu_cpn_mode"
+              v-if="is_aside_menu_mode_show"
+            >
+              <div title="深色模式和浅色模式切换" @click="switchColorModeClick">
+                <img src="asset/img/adjust.svg" />
+              </div>
+            </div>
+          </transition>
+          <div class="aside_menu_set">
+            <div
+              class="aside_menu_cpn aside_menu_cpn_set"
+              title="设置"
+              @click="asideSetClick"
+            >
+              <img src="asset/img/set.svg" />
+            </div>
+            <div
+              class="aside_menu_cpn aside_menu_set_cpn"
+              title="回到顶部"
+              @click="toTopClick"
+            >
+              <img src="asset/img/up-arrow.svg" />
+            </div>
+          </div>
+        </div>
+      </transition>
+      <div class="footer"></div>
+    </div>
+    <div id="Loading">
+      <div class="loader-inner ball-beat">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <script src="src/app.js"></script>
+  </body>
+</html>
