@@ -3,25 +3,27 @@ const app = new Vue({
   data() {
     return {
       blog: {
-        blog_title: "",
-        blog_url: "",
-        blog_pub_url: ""
+        blog_title: _config["blog_name"],
+        blog_url: `https://${_config["owner"]}.github.io/${_config["repo"]}`,
+        blog_pub_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues`
       },
       page: 1, //页数
-      per_page: 0, //每页数量
+      per_page: _config["per_page"], //每页数量
       filter: "created", //筛选
-      state: "open", //文章状态open closed all
-      blog_author_type: "", //发布博客的用户 默认 OWNER
-      show_friend: null, //是否展示好友
-      friends_id: [], //好友id
-      friends_name: [], //好友name
+      state: _config["state"], //文章状态open closed all
+      blog_author_type: _config["blog_author_type"], //发布博客的用户 默认 OWNER
+      show_friend: _config["show_friend"], //是否展示好友
+      friends_id: _config["friends_id"], //好友id
+      friends_name: _config["friends_name"], //好友name
       author: {
         author_id: "", //用户ID
-        author_nickname: "", //用户昵称
-        author_name: "", //作者
-        author_avatar_url: "", //作者头像
-        author_url: "", //作者gihtub链接
-        author_repo: "" //作者gihtub仓库
+        author_nickname: _config["nickname"] || _config["owner"], //用户昵称
+        author_name: _config["owner"], //作者
+        author_avatar_url: `https://avatars.githubusercontent.com/${_config["owner"]}?size=64`, //作者头像
+        author_url: `https://github.com/${_config["owner"]}`, //作者gihtub链接
+        author_repo: `https://github.com/${_config["owner"]}/${_config["repo"]}`, //文章仓库
+        author_post_url: `https://${_config["owner"]}.github.io/${_config["repo"]}/`, //文章地址
+        author_post_api_url: `https://api.github.com/repos/${_config["owner"]}/${_config["repo"]}/issues` //文章api
       },
       post: {
         post_id: "", //文章id
@@ -37,30 +39,32 @@ const app = new Vue({
       },
       post_max_number: 0, //文章的数量
       postdata: [], //文章信息
-      access_token: "", //文章请求token
+      access_token: _config["access_token"], //文章请求token
       is_aside_menu_mode_show: false, //菜单设置详情按钮显示与隐藏
       isShowbacktop: false, //是否显示返回顶部按钮
       blogtheme: "light", //主题，默认浅色
       BS: null //滚动条对象
     }
   },
-  mounted() {
-    this.blog.blog_title = _config["blog_name"]
-    this.blog.blog_url = `https://${_config["owner"]}.github.io/${_config["repo"]}`
-    this.blog.blog_pub_url = `https://github.com/${_config["owner"]}/${_config["repo"]}/issues`
+  created() {
+    // this.blog.blog_title = _config["blog_name"]
+    // this.blog.blog_url = `https://${_config["owner"]}.github.io/${_config["repo"]}`
+    // this.blog.blog_pub_url = `https://github.com/${_config["owner"]}/${_config["repo"]}/issues`
     document.title = this.blog.blog_title
-    this.access_token = _config["access_token"]
-    this.author.author_name = _config["owner"]
-    this.author.author_nickname = _config["nickname"]
-    this.per_page = _config["per_page"]
-    this.state = _config["state"]
-    this.blog_author_type = _config["blog_author_type"]
-    this.show_friend = _config["show_friend"]
-    this.friends_id = _config["friends_id"]
-    this.friends_name = _config["friends_name"]
-
-    let url = `https://api.github.com/repos/${_config["owner"]}/${_config["repo"]}/issues`
-    url = url.trim()
+    // this.access_token = _config["access_token"]
+    // this.author.author_name = _config["owner"]
+    // this.author.author_nickname = _config["nickname"] || _config["owner"]
+    // this.per_page = _config["per_page"]
+    // this.state = _config["state"]
+    // this.blog_author_type = _config["blog_author_type"]
+    // this.show_friend = _config["show_friend"]
+    // this.friends_id = _config["friends_id"]
+    // this.friends_name = _config["friends_name"]
+    // this.author.author_url = `https://github.com/${_config["owner"]}`
+    // this.author.author_avatar_url = `https://avatars.githubusercontent.com/${_config["owner"]}?size=64`
+  },
+  mounted() {
+    const url = this.author.author_post_api_url
     const page = this.page
     const per_page = this.per_page
     const filter = this.filter
@@ -96,17 +100,17 @@ const app = new Vue({
         }
 
         if (Array.isArray(postlist_owner) && postlist_owner.length > 0) {
-          for (let i = 0; i < postlist_owner.length; i++) {
-            if (postlist_owner[i].user.login === this.author.author_name) {
-              this.author.author_id = postlist_owner[i].user.id
-              this.author.author_nickname =
-                _config["nickname"] || postlist_owner[i].user.login
-              this.author.author_name = postlist_owner[i].user.login
-              this.author.author_url = postlist_owner[i].user.html_url
-              this.author.author_avatar_url = postlist_owner[i].user.avatar_url
-              break
-            }
-          }
+          // for (let i = 0; i < postlist_owner.length; i++) {
+          //   if (postlist_owner[i].user.login === this.author.author_name) {
+          //     this.author.author_id = postlist_owner[i].user.id
+          //     this.author.author_nickname =
+          //       _config["nickname"] || postlist_owner[i].user.login
+          //     this.author.author_name = postlist_owner[i].user.login
+          //     this.author.author_url = postlist_owner[i].user.html_url
+          //     this.author.author_avatar_url = postlist_owner[i].user.avatar_url
+          //     break
+          //   }
+          // }
 
           // this.author.author_id = postlist_owner[0].user.id
           // this.author.author_nickname =
@@ -307,8 +311,7 @@ const app = new Vue({
       })
       this.BS.on("pullingUp", () => {
         //上拉加载更多
-        let url = `https://api.github.com/repos/${_config["owner"]}/${_config["repo"]}/issues`
-        url = url.trim()
+        const url = this.author.author_post_api_url
         const page = parseInt(this.page) + 1
         const per_page = this.per_page
         const filter = this.filter
