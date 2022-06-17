@@ -110,9 +110,17 @@ const app = new Vue({
         console.log(error)
       })
   },
-  updated() {
-    if (this.BS) {
-      this.getAllImgLoad()
+  // updated() {
+  //   console.log(123)
+  //   if (this.BS) {
+  //     this.getAllImgLoad()
+  //   }
+  // },
+  watch: {
+    postdata() {
+      if (this.BS) {
+        this.getAllImgLoad()
+      }
     }
   },
   methods: {
@@ -250,11 +258,16 @@ const app = new Vue({
       // console.log(this.blogtheme)
     },
     getAllImgLoad() {
-      //获取所有图片加载成功，滚动条refresh
-      const arrImgs = getAllImgs() //获取所有动态加载的图片
-      Promise.all(loadImgs(arrImgs)).then(() => {
+      // //获取所有图片加载成功，滚动条refresh
+      // const arrImgs = getAllImgs() //获取所有动态加载的图片
+      // Promise.all(loadImgs(arrImgs)).then(() => {
+      //   //判断图片加载完成
+      //   this.BS.refresh()
+      // })
+      getAllImgLoadComplete(() => {
         //判断图片加载完成
-        this.BS.refresh()
+        // console.log("所有图片加载完成!")
+        this.BS && this.BS.refresh()
       })
     }
   }
@@ -288,27 +301,49 @@ const clientHeight =
 document.getElementById("container").style.height = clientHeight - 50 + "px"
 // console.log(document.getElementById("container").style.height)
 
-//判断图片是否加载完成
-function loadImgs(arr) {
-  const newimages = []
-  for (var i = 0; i < arr.length; i++) {
-    newimages[i] = new Promise(function (resolve, reject) {
-      var image = new Image()
-      image.addEventListener("load", function listener() {
-        resolve(image)
-        this.removeEventListener("load", listener)
-      })
-      image.src = arr[i].src
-      image.addEventListener("error", reject)
-    })
-    // console.log(arr[i].src)
-  }
-  return newimages
-}
+// //判断图片是否加载完成
+// function loadImgs(arr) {
+//   const newimages = []
+//   for (var i = 0; i < arr.length; i++) {
+//     newimages[i] = new Promise(function (resolve, reject) {
+//       var image = new Image()
+//       image.addEventListener("load", function listener() {
+//         resolve(image)
+//         this.removeEventListener("load", listener)
+//       })
+//       image.src = arr[i].src
+//       image.addEventListener("error", reject)
+//     })
+//     // console.log(arr[i].src)
+//   }
+//   return newimages
+// }
 
-//获取容器加载出来的所有图片
-function getAllImgs() {
-  const imgs = document.querySelectorAll(".ul_postlist img")
-  // console.log(Array.prototype.slice.call(imgs))
-  return Array.prototype.slice.call(imgs, 0)
+// //获取容器加载出来的所有图片
+// function getAllImgs() {
+//   const imgs = document.querySelectorAll(".ul_postlist img")
+//   // console.log(Array.prototype.slice.call(imgs))
+//   return Array.prototype.slice.call(imgs, 0)
+// }
+
+//判断所有图片加载完成
+function getAllImgLoadComplete(callback) {
+  const images = document.getElementById("ul_postlist").querySelectorAll("img")
+  const promises = Array.prototype.slice.call(images).map((img) => {
+    return new Promise((resolve, reject) => {
+      let loadImg = new Image()
+      loadImg.src = img.src
+      loadImg.onload = () => {
+        resolve(img)
+      }
+    })
+  })
+
+  Promise.all(promises)
+    .then((results) => {
+      callback()
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
