@@ -7,8 +7,9 @@ var _config = {
   repo: "moment", // github 中对应仓库名
   blog_author_type: "OWNER", //发布博客的用户 默认 OWNER
   show_friend: false, //是否展示好友
-  friends_id: ["chunxiao01"], //好友id
-  friends_name: ["凤梨罐头也过期"], //好友name
+  friends_id: [], //好友id
+  friends_name: [], //好友name
+  friends_access_token: [], //好友token
   access_token: "ghp_bNvk6M7FFED" + "5rIWJcMSJE7MQTHgOak1G0RUj", // 请求量大时需要在 github 后台单独设置一个读取公开库的 token, 注意将token 拆成两个字符串，否则会被系统自动删除掉
   per_page: 5, // 默认一页显示几篇文章
   state: "open" //文章状态 open closed all
