@@ -49,21 +49,21 @@
           <li class="li_postlist" v-for="post in postdata">
             <div class="post_container">
               <header class="post_header">
-                <a :href="blog.blog_url" aria-label="post_author">
+                <a :href="post.html_url" aria-label="post_author">
                   <div class="post_author">
                     <img
                       :src="post.avatar_url"
                       class="post_author_img"
-                      :title="author.author_nickname"
+                      :title="post.post_author_nickname"
                     />
                   </div>
                 </a>
                 <div class="post_info">
                   <div class="post_info_content">
                     <div class="post_info_author">
-                      <a :href="blog.blog_url" class="post_info_author_name"
+                      <a :href="post.html_url" class="post_info_author_name"
                         ><span :title="post.login" v-cloak
-                          >{{author.author_nickname}}</span
+                          >{{post.post_author_nickname}}</span
                         >
                       </a>
                     </div>
