@@ -43,7 +43,8 @@ const app = new Vue({
       is_aside_menu_mode_show: false, //菜单设置详情按钮显示与隐藏
       isShowbacktop: false, //是否显示返回顶部按钮
       blogtheme: "light", //主题，默认浅色
-      BS: null //滚动条对象
+      BS: null, //滚动条对象
+      isOpenheadmenu: false //顶部菜单栏是否打开
     }
   },
   created() {
@@ -348,9 +349,12 @@ const app = new Vue({
       const theme = document.querySelector("#theme-css-link")
       if (theme.getAttribute("href") == "asset/css/base.css") {
         theme.href = "asset/css/base-dark.css"
+        window.localStorage.setItem("theme_mode", "dark") //记录主题模式
       } else {
         theme.href = "asset/css/base.css"
+        window.localStorage.setItem("theme_mode", "light") //记录主题模式
       }
+      this.isOpenheadmenu = !this.isOpenheadmenu //关闭菜单栏
     },
     getAllImgLoad() {
       // //获取所有图片加载成功，滚动条refresh
@@ -364,6 +368,10 @@ const app = new Vue({
         // console.log("所有图片加载完成!")
         this.BS && this.BS.refresh()
       })
+    },
+    headmenuClick() {
+      //顶部菜单栏是否展开或者折叠
+      this.isOpenheadmenu = !this.isOpenheadmenu
     }
   }
 })
@@ -446,12 +454,20 @@ function getAllImgLoadComplete(callback) {
 //深色模式和浅色模式监听
 const theme = document.querySelector("#theme-css-link")
 let mode_media = window.matchMedia("(prefers-color-scheme: dark)") //深色模式
+const theme_mode = window.localStorage.getItem("theme_mode") //主题模式
+if (theme_mode === "dark") {
+  theme.href = "asset/css/base-dark.css"
+} else {
+  theme.href = "asset/css/base.css"
+}
 let mode_callback = (e) => {
   let prefersDarkMode = e.matches
   if (prefersDarkMode) {
     theme.href = "asset/css/base-dark.css"
+    window.localStorage.setItem("theme_mode", "dark") //记录主题模式
   } else {
     theme.href = "asset/css/base.css"
+    window.localStorage.setItem("theme_mode", "light") //记录主题模式
   }
 }
 if (typeof mode_media.addEventListener === "function") {

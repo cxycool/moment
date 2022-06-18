@@ -47,17 +47,111 @@
         <nav class="header_nav">
           <span class="blog_title">
             <a :href="blog.blog_url">
-              <h2 class="blog_title_text" v-cloak>{{blog.blog_title}}</h2>
+              <h4 class="blog_title_text" v-cloak>{{blog.blog_title}}</h4>
             </a>
           </span>
-          <div class="blog_author">
-            <a :href="blog.blog_pub_url" id="blog_author_url">
-              <img
+          <div class="blog_menu">
+            <a href="#" @click="headmenuClick">
+              <!-- <img
                 :src="author.author_avatar_url"
                 id="blog_author_img"
                 :title="author.author_nickname"
-              />
+              /> -->
+              <div class="head_menu_cpn head_menu_cpn_set" title="菜单">
+                <transition name="head-menu" mode="out-in">
+                  <div
+                    id="head_menu_open"
+                    v-if="!isOpenheadmenu"
+                    key="head-menu-open"
+                  >
+                    <svg
+                      class="icon_svg"
+                      viewBox="0 0 1024 1024"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M170.666667 298.666667a42.666667 42.666667 0 0 1 42.666666-42.666667h597.333334a42.666667 42.666667 0 1 1 0 85.333333H213.333333a42.666667 42.666667 0 0 1-42.666666-42.666666z m0 213.333333a42.666667 42.666667 0 0 1 42.666666-42.666667h597.333334a42.666667 42.666667 0 1 1 0 85.333334H213.333333a42.666667 42.666667 0 0 1-42.666666-42.666667z m0 213.333333a42.666667 42.666667 0 0 1 42.666666-42.666666h597.333334a42.666667 42.666667 0 1 1 0 85.333333H213.333333a42.666667 42.666667 0 0 1-42.666666-42.666667z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div id="head_menu_close" v-else key="head-menu-close">
+                    <svg
+                      class="icon_svg"
+                      viewBox="0 0 1024 1024"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M557.312 513.248l265.28-263.904c12.544-12.48 12.608-32.704 0.128-45.248-12.512-12.576-32.704-12.608-45.248-0.128l-265.344 263.936-263.04-263.84C236.64 191.584 216.384 191.52 203.84 204 191.328 216.48 191.296 236.736 203.776 249.28l262.976 263.776L201.6 776.8c-12.544 12.48-12.608 32.704-0.128 45.248 6.24 6.272 14.464 9.44 22.688 9.44 8.16 0 16.32-3.104 22.56-9.312l265.216-263.808 265.44 266.24c6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.592-9.344 12.512-12.48 12.544-32.704 0.064-45.248L557.312 513.248z"
+                      ></path>
+                    </svg>
+                  </div>
+                </transition>
+              </div>
             </a>
+            <transition name="head-menu-list">
+              <div class="head_menu_list" v-if="isOpenheadmenu">
+                <ul class="ul_head_menu_list">
+                  <li class="li_head_menu_list">
+                    <div class="li_head_menu_list_icon">
+                      <svg
+                        class="icon_svg"
+                        viewBox="0 0 1024 1024"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M813.7 896H210.3c-45.4 0-82.3-36.9-82.3-82.3V210.3c0-45.4 36.9-82.3 82.3-82.3H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H210.3c-9.9 0-18.3 8.4-18.3 18.3v603.4c0 9.9 8.4 18.3 18.3 18.3h603.4c9.9 0 18.3-8.4 18.3-18.3V512c0-17.7 14.3-32 32-32s32 14.3 32 32v301.7c0 45.4-36.9 82.3-82.3 82.3zM802.4 197.3l24.4 24.4L536.4 512H512v-24.4l290.4-290.3m0-68c-13.9 0-27.8 5.3-38.4 15.9l-316 316v60.5c0 30 24.3 54.3 54.3 54.3h60.5l316-316c21.2-21.2 21.2-55.6 0-76.8l-38-38c-10.6-10.6-24.5-15.9-38.4-15.9z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <a :href="blog.blog_pub_url" class="head_menu_list_item">
+                      书写动态
+                    </a>
+                  </li>
+                  <li class="li_head_menu_list">
+                    <div class="li_head_menu_list_icon">
+                      <svg
+                        class="icon_svg"
+                        viewBox="0 0 1024 1024"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M16 512c0 273.932 222.066 496 496 496s496-222.068 496-496S785.932 16 512 16 16 238.066 16 512z m496 368V144c203.41 0 368 164.622 368 368 0 203.41-164.622 368-368 368z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <a
+                      href="#"
+                      class="head_menu_list_item"
+                      title="深色模式和浅色模式切换"
+                      @click="switchColorModeClick"
+                    >
+                      主题模式
+                    </a>
+                  </li>
+                  <li class="li_head_menu_list">
+                    <div class="li_head_menu_list_icon">
+                      <svg
+                        class="icon_svg"
+                        viewBox="0 0 1024 1024"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M691.2 608c-57.4 0-85 32-179.2 32-94.2 0-121.6-32-179.2-32C184.4 608 64 728.4 64 876.8V928c0 53 43 96 96 96h704c53 0 96-43 96-96v-51.2c0-148.4-120.4-268.8-268.8-268.8zM864 928H160v-51.2c0-95.2 77.6-172.8 172.8-172.8 29.2 0 76.6 32 179.2 32 103.4 0 149.8-32 179.2-32 95.2 0 172.8 77.6 172.8 172.8V928zM512 576c159 0 288-129 288-288S671 0 512 0 224 129 224 288s129 288 288 288z m0-480c105.8 0 192 86.2 192 192s-86.2 192-192 192-192-86.2-192-192 86.2-192 192-192z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <a :href="author.author_url" class="head_menu_list_item">
+                      关于我的
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </transition>
           </div>
         </nav>
       </header>
@@ -132,8 +226,8 @@
         </ul>
       </div>
       <transition name="aside-menu">
-        <div class="aside_menu" id="aside_menu" v-if="isShowbacktop">
-          <transition name="aside-menu-mode">
+        <div class="aside_menu" v-if="isShowbacktop">
+          <!-- <transition name="aside-menu-mode">
             <div
               class="aside_menu_cpn aside_menu_cpn_mode"
               v-if="is_aside_menu_mode_show"
@@ -142,8 +236,22 @@
                 <img src="asset/img/adjust.svg" />
               </div>
             </div>
-          </transition>
-          <div class="aside_menu_set">
+          </transition> -->
+          <div class="aside_totop">
+            <div class="aside_menu_cpn" title="回到顶部" @click="toTopClick">
+              <svg
+                class="icon_svg"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M554.666667 268.8v601.6h-85.333334V268.8L337.066667 401.066667 277.333333 341.333333 512 106.666667 746.666667 341.333333l-59.733334 59.733334L554.666667 268.8z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <!-- <div class="aside_menu_set">
             <div
               class="aside_menu_cpn aside_menu_cpn_set"
               title="设置"
@@ -158,7 +266,7 @@
             >
               <img src="asset/img/up-arrow.svg" />
             </div>
-          </div>
+          </div> -->
         </div>
       </transition>
       <div class="footer"></div>
