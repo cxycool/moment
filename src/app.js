@@ -338,6 +338,19 @@ const app = new Vue({
     switchColorModeClick() {
       //切换深色和浅色模式
       // console.log(this.blogtheme)
+      // console.log(!!window.matchMedia("(prefers-color-scheme: light)").matches)
+      // if (!!window.matchMedia("(prefers-color-scheme: light)").matches) {
+      //   //判断处于浅色模式
+      //   window.matchMedia("(prefers-color-scheme: dark)")
+      // } else {
+      //   window.matchMedia("(prefers-color-scheme: light)")
+      // }
+      const theme = document.querySelector("#theme-css-link")
+      if (theme.getAttribute("href") == "asset/css/base.css") {
+        theme.href = "asset/css/base-dark.css"
+      } else {
+        theme.href = "asset/css/base.css"
+      }
     },
     getAllImgLoad() {
       // //获取所有图片加载成功，滚动条refresh
@@ -428,4 +441,21 @@ function getAllImgLoadComplete(callback) {
     .catch((err) => {
       console.log(err)
     })
+}
+
+//深色模式和浅色模式监听
+const theme = document.querySelector("#theme-css-link")
+let mode_media = window.matchMedia("(prefers-color-scheme: dark)") //深色模式
+let mode_callback = (e) => {
+  let prefersDarkMode = e.matches
+  if (prefersDarkMode) {
+    theme.href = "asset/css/base-dark.css"
+  } else {
+    theme.href = "asset/css/base.css"
+  }
+}
+if (typeof mode_media.addEventListener === "function") {
+  mode_media.addEventListener("change", mode_callback)
+} else if (typeof mode_media.addEventListener === "function") {
+  mode_media.addEventListener(mode_callback)
 }
