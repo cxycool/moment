@@ -53,6 +53,11 @@ body {
   color: var(--bs-body-color);
 }
 
+.blog_author a {
+  display: inline-block;
+  width: 100%;
+}
+
 .blog_author img {
   width: 2rem;
   border-radius: 50%;
