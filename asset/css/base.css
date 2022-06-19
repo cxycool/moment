@@ -443,7 +443,7 @@ body {
   left: 0;
   margin: 0;
   padding: 0;
-  height: 0;
+  height: 10px;
   z-index: 1;
 }
 
