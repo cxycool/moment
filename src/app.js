@@ -338,7 +338,7 @@ const app = new Vue({
     toTopClick() {
       //滚动条回到顶部
       if (this.BS) {
-        this.BS.scrollTo(0, 0, 1000)
+        this.BS.scrollTo(0, 0, 750)
       }
     },
     switchColorModeClick() {
@@ -403,7 +403,7 @@ marked.setOptions({
 //重新计算container高度
 const clientHeight =
   document.body.clientHeight || document.documentElement.clientHeight
-document.getElementById("container").style.height = clientHeight - 50 + "px"
+document.getElementById("container").style.height = clientHeight - 40 + "px"
 // console.log(document.getElementById("container").style.height)
 
 // //判断图片是否加载完成
