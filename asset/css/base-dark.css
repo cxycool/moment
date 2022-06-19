@@ -109,7 +109,7 @@ body {
 }
 
 .head_menu_list .ul_head_menu_list {
-  width: 120px;
+  width: 125px;
   padding: 5px;
   margin: 0;
 }
@@ -142,7 +142,7 @@ body {
   text-decoration: none;
   color: var(--bs-light);
   font-size: 1rem;
-  line-height: 2.25;
+  line-height: 2.35;
 }
 
 .head-menu-list-enter-active {
