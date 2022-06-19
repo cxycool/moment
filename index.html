@@ -12,34 +12,14 @@
       media="(prefers-color-scheme: dark)"
     />
     <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" />
-    <!-- <link
-      rel="stylesheet"
-      href="asset/css/base-dark.css"
-      media="(prefers-color-scheme: dark)"
-    />
-    -->
-    <!-- <link
-      rel="stylesheet"
-      href="asset/css/base.css"
-      media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)"
-    /> -->
     <link rel="stylesheet" id="theme-css-link" href="asset/css/base.css" />
-
-    <link rel="stylesheet" href="asset/css/highlight.min.css" />
-    <!-- <script src="asset/js/bootstrap.min.js"></script> -->
     <script src="asset/js/axios.min.js"></script>
-    <!-- <script src="asset/js/director.min.js"></script> -->
     <script src="asset/js/marked.min.js"></script>
     <script src="asset/js/dayjs.min.js"></script>
     <script src="asset/js/zh-cn.min.js"></script>
     <script src="src/config.js"></script>
-    <script src="asset/js/highlight.min.js"></script>
     <script src="asset/js/better-scroll.min.js"></script>
-    <!-- <script src="asset/js/better-scroll-core.min.js"></script> -->
-    <!-- <script src="asset/js/better-scroll-pull-up.min.js"></script> -->
     <script src="asset/js/vue.min.js"></script>
-    <!-- <script src="asset/js/vue-router-3.5.4.js"></script> -->
-    <!-- <script src="asset/js/vuex-3.6.2.js"></script> -->
   </head>
   <body>
     <div id="app">
@@ -52,11 +32,6 @@
           </span>
           <div class="blog_menu">
             <a href="#" @click="headmenuClick">
-              <!-- <img
-                :src="author.author_avatar_url"
-                id="blog_author_img"
-                :title="author.author_nickname"
-              /> -->
               <div class="head_menu_cpn head_menu_cpn_set" title="菜单">
                 <transition name="head-menu" mode="out-in">
                   <div
@@ -284,16 +259,6 @@
       </div>
       <transition name="aside-menu">
         <div class="aside_menu" v-if="isShowbacktop">
-          <!-- <transition name="aside-menu-mode">
-            <div
-              class="aside_menu_cpn aside_menu_cpn_mode"
-              v-if="is_aside_menu_mode_show"
-            >
-              <div title="深色模式和浅色模式切换" @click="switchColorModeClick">
-                <img src="asset/img/adjust.svg" />
-              </div>
-            </div>
-          </transition> -->
           <div class="aside_totop">
             <div class="aside_menu_cpn" title="回到顶部" @click="toTopClick">
               <svg
@@ -308,22 +273,6 @@
               </svg>
             </div>
           </div>
-          <!-- <div class="aside_menu_set">
-            <div
-              class="aside_menu_cpn aside_menu_cpn_set"
-              title="设置"
-              @click="asideSetClick"
-            >
-              <img src="asset/img/set.svg" />
-            </div>
-            <div
-              class="aside_menu_cpn aside_menu_set_cpn"
-              title="回到顶部"
-              @click="toTopClick"
-            >
-              <img src="asset/img/up-arrow.svg" />
-            </div>
-          </div> -->
         </div>
       </transition>
       <div class="footer"></div>
