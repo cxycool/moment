@@ -18,7 +18,7 @@ body {
   left: 0;
   margin: 0;
   padding: 0;
-  height: 40px;
+  height: 45px;
   z-index: 1;
 }
 
@@ -27,7 +27,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: 0 10px;
+  padding: 2.5px 10px;
   background: var(--bs-gray-300);
 }
 
@@ -43,8 +43,9 @@ body {
 
 .header_nav .blog_title_text {
   font-size: 1.375rem;
-  margin-top: 5px;
+  margin-top: 8px;
   margin-bottom: 0;
+  line-height: 1;
 }
 
 .head_menu_cpn {
