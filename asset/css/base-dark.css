@@ -27,7 +27,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: 2.5px 10px;
+  padding: 0 10px;
   background: var(--bs-gray-900);
 }
 
@@ -42,7 +42,8 @@ body {
 }
 
 .header_nav .blog_title_text {
-  margin-top: 0.275rem;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 
 .head_menu_cpn {
