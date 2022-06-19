@@ -286,6 +286,8 @@ const app = new Vue({
         return "刚刚"
       } else if (diff_minute < 60) {
         return diff_minute + "分钟前"
+      } else if (diff_hour < 24) {
+        return diff_minute + "小时前"
       } else {
         return dayjs(date).format("YYYY-MM-DD HH:mm:ss")
       }
