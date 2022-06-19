@@ -42,6 +42,7 @@ body {
 }
 
 .header_nav .blog_title_text {
+  font-size: 1.375rem;
   margin-top: 5px;
   margin-bottom: 0;
 }
