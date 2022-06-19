@@ -11,6 +11,6 @@ var _config = {
   friends_name: [], //好友name
   friends_access_token: [], //好友token
   access_token: "ghp_bNvk6M7FFED" + "5rIWJcMSJE7MQTHgOak1G0RUj", // 请求量大时需要在 github 后台单独设置一个读取公开库的 token, 注意将token 拆成两个字符串，否则会被系统自动删除掉
-  per_page: 15, // 默认一页显示几篇文章
+  per_page: 20, // 默认一页显示几篇文章
   state: "open" //文章状态 open closed all
 }
