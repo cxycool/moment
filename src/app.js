@@ -329,7 +329,7 @@ const app = new Vue({
     //滚动内容实时监听位置
     scrollPosition(position) {
       const position_y = Math.abs(position.y)
-      this.isShowbacktop = position_y > 500
+      this.isShowbacktop = position_y > 360
     },
     asideSetClick() {
       //设置
