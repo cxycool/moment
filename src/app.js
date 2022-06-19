@@ -397,10 +397,7 @@ marked.setOptions({
   sanitize: false,
   smartLists: true,
   smartypants: true,
-  xhtml: true,
-  highlight: function (code) {
-    return highlight.highlightAuto(code).value
-  }
+  xhtml: true
 })
 
 //重新计算container高度
