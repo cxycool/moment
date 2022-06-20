@@ -1,0 +1,97 @@
+/*深色模式适配*/
+body {
+  background: var(--bs-gray-800);
+}
+
+.header {
+  background: var(--bs-gray-900);
+}
+
+.header_nav {
+  background: var(--bs-gray-900);
+}
+
+.header_nav .blog_title a {
+  color: var(--bs-light);
+}
+
+.head_menu_cpn {
+  background-color: var(--bs-gray-900);
+  color: var(--bs-light);
+}
+
+.icon_svg path {
+  fill: var(--bs-light);
+}
+
+.header_nav .blog_menu {
+  color: var(--bs-light);
+}
+
+.blog_menu img {
+  border-color: var(--bs-light);
+}
+
+.head_menu_list {
+  background-color: var(--bs-gray-800);
+}
+
+.li_head_menu_list .li_head_menu_list_icon {
+  background-color: var(--bs-gray-800);
+  color: var(--bs-light);
+}
+
+.li_head_menu_list .head_menu_list_item {
+  color: var(--bs-light);
+}
+
+.container {
+  background: var(--bs-gray-800);
+}
+
+.li_postlist {
+  background: var(--bs-gray-800);
+}
+
+.post_container {
+  background: var(--bs-dark);
+}
+
+.post_info_author {
+  color: var(--bs-light);
+}
+
+.post_info_time {
+  color: var(--bs-gray-600);
+}
+
+.post_info_time_text {
+  color: var(--bs-gray-200);
+}
+
+.post_main_content_text_title {
+  color: var(--bs-light);
+}
+
+.post_main_content_text_detail {
+  /* word-wrap: break-word;
+  white-space: pre-wrap; */
+  color: var(--bs-light);
+}
+
+.post_main_content_bottom {
+  background: var(--bs-dark);
+}
+
+.aside_menu_cpn {
+  background-color: var(--bs-gray-800);
+  color: var(--bs-light);
+}
+
+.footer {
+  background: var(--bs-gray-800);
+}
+
+#loading-mask {
+  background: var(--bs-gray-800);
+}

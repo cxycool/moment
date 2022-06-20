@@ -146,9 +146,10 @@ const app = new Vue({
             })
           })
         }
-        //删除动画
-        if (document.getElementById("Loading"))
-          document.getElementById("Loading").remove()
+        //隐藏动画
+        document.getElementById("loading-mask").style.display = "none"
+        // if (document.getElementById("Loading"))
+        //   document.getElementById("Loading").remove()
 
         this.$nextTick(() => {
           this.getscroll() //滚动条
@@ -313,7 +314,7 @@ const app = new Vue({
         // scrollbar: true
       })
 
-      // this.getAllImgLoad()
+      this.getAllImgLoad()
 
       this.BS.on("scroll", (position) => {
         //滚动事件
@@ -355,11 +356,11 @@ const app = new Vue({
       //   window.matchMedia("(prefers-color-scheme: light)")
       // }
       const theme = document.querySelector("#theme-css-link")
-      if (theme.getAttribute("href") == "asset/css/base.css") {
-        theme.href = "asset/css/base-dark.css"
+      if (theme.getAttribute("href") == "asset/css/light.css") {
+        theme.href = "asset/css/dark.css"
         window.localStorage.setItem("theme_mode", "dark") //记录主题模式
       } else {
-        theme.href = "asset/css/base.css"
+        theme.href = "asset/css/light.css"
         window.localStorage.setItem("theme_mode", "light") //记录主题模式
       }
       this.isOpenheadmenu = !this.isOpenheadmenu //关闭菜单栏
@@ -380,6 +381,49 @@ const app = new Vue({
     headmenuClick() {
       //顶部菜单栏是否展开或者折叠
       this.isOpenheadmenu = !this.isOpenheadmenu
+      // if (this.isOpenheadmenu) {
+      //   //菜单栏展开
+      //   document.getElementById("app").style.zIndex = 103
+      // } else {
+      //   document.getElementById("app").style.zIndex = 100
+      // }
+    },
+    headmenuNewPostClick() {
+      //顶部菜单栏发表动态
+      this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
+      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      location.href = this.blog.blog_new_post_url //跳转链接
+    },
+    headmenuEditPostClick() {
+      //编辑动态
+      this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
+      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      location.href = this.blog.blog_pub_url //跳转链接
+    },
+    headmenuEditConfigClick() {
+      //修改配置
+      this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
+      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      location.href = this.blog.blog_config_url //跳转链接
+    },
+    headmenuViewHelpClick() {
+      //帮助文档
+      this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
+      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      location.href = this.blog.blog_help_url //跳转链接
+    },
+    headmenuAboutMeClick() {
+      //关于
+      this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
+      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      location.href = this.author.author_url //跳转链接
+    },
+    headmenuGoHomeClick() {
+      //回到首页
+      this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
+      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      location.href = this.blog.blog_url //跳转链接
+      document.getElementById("loading-mask").style.display = "none" //隐藏遮罩层
     }
   }
 })
@@ -461,17 +505,17 @@ const theme = document.querySelector("#theme-css-link")
 let mode_media = window.matchMedia("(prefers-color-scheme: dark)") //深色模式
 const theme_mode = window.localStorage.getItem("theme_mode") //主题模式
 if (theme_mode === "dark") {
-  theme.href = "asset/css/base-dark.css"
+  theme.href = "asset/css/dark.css"
 } else {
-  theme.href = "asset/css/base.css"
+  theme.href = "asset/css/light.css"
 }
 let mode_callback = (e) => {
   let prefersDarkMode = e.matches
   if (prefersDarkMode) {
-    theme.href = "asset/css/base-dark.css"
+    theme.href = "asset/css/dark.css"
     window.localStorage.setItem("theme_mode", "dark") //记录主题模式
   } else {
-    theme.href = "asset/css/base.css"
+    theme.href = "asset/css/light.css"
     window.localStorage.setItem("theme_mode", "light") //记录主题模式
   }
 }
