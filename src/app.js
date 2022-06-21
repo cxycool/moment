@@ -280,16 +280,20 @@ const app = new Vue({
     dateformat(date) {
       dayjs.locale("zh-cn") //日期本地化
       const nowdate = dayjs()
-      const diff_day = nowdate.diff(date, "day")
-      const diff_hour = nowdate.diff(date, "hour")
-      const diff_minute = nowdate.diff(date, "minute")
-      const diff_seconds = nowdate.diff(date, "second")
+      const diff_day = nowdate.diff(
+        dayjs(date).format("YYYY-MM-DD 00:00:00"),
+        "day",
+        true
+      )
+      const diff_hour = nowdate.diff(date, "hour", true)
+      const diff_minute = nowdate.diff(date, "minute", true)
+      const diff_seconds = nowdate.diff(date, "second", true)
       if (diff_seconds < 60) {
         return "刚刚"
       } else if (diff_minute < 60) {
-        return diff_minute + "分钟前"
+        return parseInt(diff_minute) + "分钟前"
       } else if (diff_hour < 24) {
-        return diff_hour + "小时前"
+        return parseInt(diff_hour) + "小时前"
       } else if (diff_day < 2) {
         return "昨天  " + dayjs(date).format("HH:mm:ss")
       } else {
