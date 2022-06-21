@@ -1,97 +1,106 @@
 /*深色模式适配*/
+@charset "UTF-8";
+:root {
+  --mode-dark-bg-dark-1: #212121;
+  --mode-dark-bg-dark-2: #2f2d2b;
+  --mode-dark-color-light-1: #fafafa;
+  --mode-dark-color-light-2: #e7e7e7;
+  --mode-dark-color-light-3: #adadad;
+}
+
 body {
-  background: var(--bs-gray-800);
+  background: var(--mode-dark-bg-dark);
 }
 
 .header {
-  background: var(--bs-gray-900);
+  background: var(--mode-dark-bg-dark-1);
 }
 
 .header_nav {
-  background: var(--bs-gray-900);
+  background: var(--mode-dark-bg-dark-1);
 }
 
 .header_nav .blog_title a {
-  color: var(--bs-light);
+  color: var(--mode-dark-color-light-1);
 }
 
 .head_menu_cpn {
-  background-color: var(--bs-gray-900);
-  color: var(--bs-light);
+  background-color: var(--mode-dark-bg-dark-1);
+  color: var(--mode-dark-color-light-1);
 }
 
 .icon_svg path {
-  fill: var(--bs-light);
+  fill: var(--mode-dark-color-light-2);
 }
 
 .header_nav .blog_menu {
-  color: var(--bs-light);
+  color: var(--mode-dark-color-light-1);
 }
 
 .blog_menu img {
-  border-color: var(--bs-light);
+  border-color: var(--mode-dark-color-light-2);
 }
 
 .head_menu_list {
-  background-color: var(--bs-gray-800);
+  background-color: var(--mode-dark-bg-dark-2);
 }
 
 .li_head_menu_list .li_head_menu_list_icon {
-  background-color: var(--bs-gray-800);
-  color: var(--bs-light);
+  background-color: var(--mode-dark-bg-dark-2);
+  color: var(--mode-dark-color-light-2);
 }
 
 .li_head_menu_list .head_menu_list_item {
-  color: var(--bs-light);
+  color: var(--mode-dark-color-light-2);
 }
 
 .container {
-  background: var(--bs-gray-800);
+  background: var(--mode-dark-bg-dark-2);
 }
 
 .li_postlist {
-  background: var(--bs-gray-800);
+  background: var(--mode-dark-bg-dark-2);
 }
 
 .post_container {
-  background: var(--bs-dark);
+  background: var(--mode-dark-bg-dark-1);
 }
 
 .post_info_author {
-  color: var(--bs-light);
+  color: var(--mode-dark-color-light-1);
 }
 
 .post_info_time {
-  color: var(--bs-gray-600);
+  color: var(--mode-dark-color-light-3);
 }
 
 .post_info_time_text {
-  color: var(--bs-gray-200);
+  color: var(--mode-dark-color-light-3);
 }
 
 .post_main_content_text_title {
-  color: var(--bs-light);
+  color: var(--mode-dark-color-light-1);
 }
 
 .post_main_content_text_detail {
   /* word-wrap: break-word;
   white-space: pre-wrap; */
-  color: var(--bs-light);
+  color: var(--mode-dark-color-light-2);
 }
 
 .post_main_content_bottom {
-  background: var(--bs-dark);
+  background: var(--mode-dark-bg-dark-1);
 }
 
 .aside_menu_cpn {
-  background-color: var(--bs-gray-800);
-  color: var(--bs-light);
+  background-color: var(--mode-dark-bg-dark-2);
+  color: var(--mode-dark-color-light-2);
 }
 
 .footer {
-  background: var(--bs-gray-800);
+  background: var(--mode-dark-bg-dark-1);
 }
 
 #loading-mask {
-  background: var(--bs-gray-800);
+  background: var(--mode-dark-bg-dark-2);
 }
