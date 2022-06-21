@@ -27,7 +27,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: 2.5px 10px;
+  padding: 2.5px 6px;
   background: var(--bs-gray-300);
 }
 
@@ -107,7 +107,7 @@ body {
   right: -48px;
   top: 45px;
   z-index: 100;
-  transform: translateX(-58px);
+  transform: translateX(-54px);
   background-color: var(--bs-gray-300);
 }
 
@@ -164,7 +164,7 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateX(-58px);
+    transform: translateX(-54px);
   }
 }
 
@@ -185,7 +185,7 @@ body {
 .li_postlist {
   width: 100%;
   margin: 0;
-  padding: 6px 10px;
+  padding: 3px 6px;
   list-style: none;
   background: var(--bs-gray-200);
 }
