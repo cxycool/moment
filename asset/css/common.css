@@ -85,7 +85,7 @@ body {
 }
 
 .header_nav .blog_menu {
-  width: 100px;
+  width: 50px;
   display: inline-block;
   text-align: right;
   font-size: calc(1.325rem);
