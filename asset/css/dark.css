@@ -1,8 +1,8 @@
 /*深色模式适配*/
 @charset "UTF-8";
 :root {
-  --mode-dark-bg-dark-1: #212121;
-  --mode-dark-bg-dark-2: #2f2d2b;
+  --mode-dark-bg-dark-1: #1c1c1e;
+  --mode-dark-bg-dark-2: #2c2c2e;
   --mode-dark-color-light-1: #fafafa;
   --mode-dark-color-light-2: #e7e7e7;
   --mode-dark-color-light-3: #adadad;
