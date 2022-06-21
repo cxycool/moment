@@ -378,7 +378,7 @@ body {
   right: -48px;
   bottom: 40px;
   z-index: 100;
-  transform: translateX(-58px);
+  transform: translateX(-54px);
 }
 
 .aside_menu_cpn {
@@ -411,7 +411,7 @@ body {
   }
   100% {
     opacity: 1;
-    transform: translateX(-58px);
+    transform: translateX(-54px);
   }
 }
 
