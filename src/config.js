@@ -1,5 +1,5 @@
 var _config = {
-  blog_name: "时光 moment", // 博客名称
+  blog_name: "我的随笔时光机", // 博客名称
   blog_url: "", //博客地址
   blog_pub_url: "", //博客发布地址
   owner: "cxycool", // github 用户名
