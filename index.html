@@ -72,7 +72,7 @@
               </div>
             </a>
             <transition name="head-menu-list">
-              <div class="head_menu_list" v-if="isOpenheadmenu">
+              <div class="head_menu_list" v-show="isOpenheadmenu" v-cloak>
                 <ul class="ul_head_menu_list">
                   <li class="li_head_menu_list">
                     <div class="li_head_menu_list_icon">
