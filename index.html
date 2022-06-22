@@ -30,13 +30,13 @@
   <body>
     <div id="app">
       <header class="header">
-        <nav class="header_nav">
+        <nav class="header_nav" v-cloak>
           <span class="blog_title">
             <a :href="blog.blog_url">
-              <h4 class="blog_title_text" v-cloak>{{blog.blog_title}}</h4>
+              <h4 class="blog_title_text">{{blog.blog_title}}</h4>
             </a>
           </span>
-          <div class="blog_menu">
+          <div class="blog_menu" v-cloak>
             <a href="#" @click="headmenuClick">
               <div class="head_menu_cpn head_menu_cpn_set" title="菜单">
                 <transition name="head-menu" mode="out-in">
@@ -72,7 +72,7 @@
               </div>
             </a>
             <transition name="head-menu-list">
-              <div class="head_menu_list" v-show="isOpenheadmenu" v-cloak>
+              <div class="head_menu_list" v-show="isOpenheadmenu">
                 <ul class="ul_head_menu_list">
                   <li class="li_head_menu_list">
                     <div class="li_head_menu_list_icon">
@@ -244,7 +244,7 @@
         </nav>
       </header>
       <div class="container" id="container">
-        <ul class="ul_postlist" id="ul_postlist">
+        <ul class="ul_postlist" id="ul_postlist" v-cloak>
           <li class="li_postlist" v-for="post in postdata">
             <div class="post_container">
               <header class="post_header">
@@ -261,7 +261,7 @@
                   <div class="post_info_content">
                     <div class="post_info_author">
                       <a :href="post.html_url" class="post_info_author_name"
-                        ><span :title="post.login" v-cloak
+                        ><span :title="post.login"
                           >{{post.post_author_nickname}}</span
                         >
                       </a>
@@ -272,7 +272,6 @@
                         :title="daterealformat(post.created_at)"
                         href="#"
                         class="post_info_time_text"
-                        v-cloak
                       >
                         {{dateformat(post.created_at)}}
                       </a>
@@ -282,9 +281,7 @@
               </header>
               <div class="post_main_content">
                 <div class="post_main_content_text">
-                  <div class="post_main_content_text_title" v-cloak>
-                    {{post.title}}
-                  </div>
+                  <div class="post_main_content_text_title">{{post.title}}</div>
                   <div
                     class="post_main_content_text_detail"
                     v-html="post.body"
