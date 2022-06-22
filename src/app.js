@@ -1,3 +1,100 @@
+//axios配置
+axios.defaults.headers.common[
+  "Authorization"
+] = `token ${_config["access_token"]}`
+axios.defaults.timeout = 30000
+
+//markdjs markdown转html设置
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: true,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: true,
+  xhtml: true
+})
+
+//重新计算container高度
+const clientHeight =
+  document.body.clientHeight || document.documentElement.clientHeight
+document.getElementById("container").style.height = clientHeight - 40 + "px"
+// console.log(document.getElementById("container").style.height)
+
+// //判断图片是否加载完成
+// function loadImgs(arr) {
+//   const newimages = []
+//   for (var i = 0; i < arr.length; i++) {
+//     newimages[i] = new Promise(function (resolve, reject) {
+//       var image = new Image()
+//       image.addEventListener("load", function listener() {
+//         resolve(image)
+//         this.removeEventListener("load", listener)
+//       })
+//       image.src = arr[i].src
+//       image.addEventListener("error", reject)
+//     })
+//     // console.log(arr[i].src)
+//   }
+//   return newimages
+// }
+
+// //获取容器加载出来的所有图片
+// function getAllImgs() {
+//   const imgs = document.querySelectorAll(".ul_postlist img")
+//   // console.log(Array.prototype.slice.call(imgs))
+//   return Array.prototype.slice.call(imgs, 0)
+// }
+
+//判断所有图片加载完成
+function getAllImgLoadComplete(callback) {
+  const images = document.getElementById("ul_postlist").querySelectorAll("img")
+  const promises = Array.prototype.slice.call(images).map((img) => {
+    return new Promise((resolve, reject) => {
+      let loadImg = new Image()
+      loadImg.src = img.src
+      loadImg.onload = () => {
+        resolve(img)
+      }
+    })
+  })
+
+  Promise.all(promises)
+    .then((results) => {
+      callback()
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+//深色模式和浅色模式监听
+const theme = document.querySelector("#theme-css-link")
+let mode_media = window.matchMedia("(prefers-color-scheme: dark)") //深色模式
+const theme_mode = window.localStorage.getItem("theme_mode") //主题模式
+if (theme_mode === "dark") {
+  theme.href = "asset/css/dark.css"
+} else {
+  theme.href = "asset/css/light.css"
+}
+let mode_callback = (e) => {
+  let prefersDarkMode = e.matches
+  if (prefersDarkMode) {
+    theme.href = "asset/css/dark.css"
+    window.localStorage.setItem("theme_mode", "dark") //记录主题模式
+  } else {
+    theme.href = "asset/css/light.css"
+    window.localStorage.setItem("theme_mode", "light") //记录主题模式
+  }
+}
+if (typeof mode_media.addEventListener === "function") {
+  mode_media.addEventListener("change", mode_callback)
+} else if (typeof mode_media.addEventListener === "function") {
+  mode_media.addEventListener(mode_callback)
+}
+
 const app = new Vue({
   el: "#app",
   data() {
@@ -431,100 +528,3 @@ const app = new Vue({
     }
   }
 })
-
-//axios配置
-axios.defaults.headers.common[
-  "Authorization"
-] = `token ${_config["access_token"]}`
-axios.defaults.timeout = 30000
-
-//markdjs markdown转html设置
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: true,
-  pedantic: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: true,
-  xhtml: true
-})
-
-//重新计算container高度
-const clientHeight =
-  document.body.clientHeight || document.documentElement.clientHeight
-document.getElementById("container").style.height = clientHeight - 40 + "px"
-// console.log(document.getElementById("container").style.height)
-
-// //判断图片是否加载完成
-// function loadImgs(arr) {
-//   const newimages = []
-//   for (var i = 0; i < arr.length; i++) {
-//     newimages[i] = new Promise(function (resolve, reject) {
-//       var image = new Image()
-//       image.addEventListener("load", function listener() {
-//         resolve(image)
-//         this.removeEventListener("load", listener)
-//       })
-//       image.src = arr[i].src
-//       image.addEventListener("error", reject)
-//     })
-//     // console.log(arr[i].src)
-//   }
-//   return newimages
-// }
-
-// //获取容器加载出来的所有图片
-// function getAllImgs() {
-//   const imgs = document.querySelectorAll(".ul_postlist img")
-//   // console.log(Array.prototype.slice.call(imgs))
-//   return Array.prototype.slice.call(imgs, 0)
-// }
-
-//判断所有图片加载完成
-function getAllImgLoadComplete(callback) {
-  const images = document.getElementById("ul_postlist").querySelectorAll("img")
-  const promises = Array.prototype.slice.call(images).map((img) => {
-    return new Promise((resolve, reject) => {
-      let loadImg = new Image()
-      loadImg.src = img.src
-      loadImg.onload = () => {
-        resolve(img)
-      }
-    })
-  })
-
-  Promise.all(promises)
-    .then((results) => {
-      callback()
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
-
-//深色模式和浅色模式监听
-const theme = document.querySelector("#theme-css-link")
-let mode_media = window.matchMedia("(prefers-color-scheme: dark)") //深色模式
-const theme_mode = window.localStorage.getItem("theme_mode") //主题模式
-if (theme_mode === "dark") {
-  theme.href = "asset/css/dark.css"
-} else {
-  theme.href = "asset/css/light.css"
-}
-let mode_callback = (e) => {
-  let prefersDarkMode = e.matches
-  if (prefersDarkMode) {
-    theme.href = "asset/css/dark.css"
-    window.localStorage.setItem("theme_mode", "dark") //记录主题模式
-  } else {
-    theme.href = "asset/css/light.css"
-    window.localStorage.setItem("theme_mode", "light") //记录主题模式
-  }
-}
-if (typeof mode_media.addEventListener === "function") {
-  mode_media.addEventListener("change", mode_callback)
-} else if (typeof mode_media.addEventListener === "function") {
-  mode_media.addEventListener(mode_callback)
-}
