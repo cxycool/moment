@@ -410,9 +410,9 @@ const app = new Vue({
       this.BS = BetterScroll.createBScroll("#container", {
         probeType: 3,
         pullUpLoad: true,
-        click: true
+        click: true,
         // scrollY: true,
-        // scrollbar: true
+        scrollbar: true
       })
 
       this.getAllImgLoad()
