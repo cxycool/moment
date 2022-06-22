@@ -259,8 +259,8 @@ body {
 }
 .post_info_time {
   color: var(--bs-gray-600);
-  font-size: 12px;
-  font-size: var(--bs-body-font-size);
+  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: var(--bs-body-line-height);
 }
 .post_info_time_text {
@@ -276,12 +276,12 @@ body {
 }
 .post_main_content_text {
   margin-top: 10px;
-  font-size: 1rem;
+  font-size: 1.075rem;
   line-height: var(--bs-body-line-height);
 }
 
 .post_main_content_text_title {
-  font-size: 1rem;
+  font-size: 1.075rem;
   color: var(--bs-body-color);
   line-height: 20px;
   line-height: var(--bs-body-line-height);
@@ -295,7 +295,7 @@ body {
 .post_main_content_text_detail {
   /* word-wrap: break-word;
   white-space: pre-wrap; */
-  font-size: 1rem;
+  font-size: 1.075rem;
   color: var(--bs-body-color);
 }
 
