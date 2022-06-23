@@ -27,7 +27,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  padding: 2.5px 6px;
+  padding: 5px 6px 0px 6px;
   background: var(--bs-gray-300);
 }
 
@@ -440,6 +440,11 @@ body {
 .aside_menu_cpn_mode {
   /* opacity: 1;
   transform: translateX(-58px); */
+}
+
+.bscroll-vertical-scrollbar {
+  width: 5px !important;
+  right: 0px !important;
 }
 
 .bscroll-indicator {
