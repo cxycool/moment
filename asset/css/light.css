@@ -88,6 +88,10 @@ body {
   color: var(--bs-body-color);
 }
 
+.bscroll-indicator {
+  background: var(--bs-gray-500) !important;
+}
+
 .footer {
   background: var(--bs-gray-200);
 }

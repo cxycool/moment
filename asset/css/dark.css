@@ -97,6 +97,10 @@ body {
   color: var(--mode-dark-color-light-2);
 }
 
+.bscroll-indicator {
+  background: var(--bs-gray-700) !important;
+}
+
 .footer {
   background: var(--mode-dark-bg-dark-1);
 }
