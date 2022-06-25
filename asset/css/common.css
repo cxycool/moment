@@ -170,7 +170,7 @@ body {
 .container {
   width: 100%;
   background: var(--bs-gray-200);
-  margin-top: 40px;
+  margin-top: 45px;
   padding: 0;
 }
 
@@ -178,8 +178,7 @@ body {
   position: absolute;
   width: 100%;
   padding: 0;
-  padding-top: 8px;
-  padding-bottom: 10px;
+  padding-top: 3px;
 }
 
 .li_postlist {
