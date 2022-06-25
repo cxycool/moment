@@ -105,7 +105,8 @@ const app = new Vue({
         blog_pub_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues`, //博客原始文章地址
         blog_new_post_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues/new`, //博客发表地址
         blog_config_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/src/config.js`, //博客配置文件地址
-        blog_help_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/README.md` //博客帮助文档
+        blog_help_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/README.md`, //博客帮助文档
+        blog_aboutme_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/About.md` //关于我的文档
       },
       page: 1, //页数
       per_page: _config["per_page"], //每页数量
@@ -517,7 +518,8 @@ const app = new Vue({
       //关于
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
       document.getElementById("loading-mask").style.display = "block" //显示遮罩层
-      location.href = this.author.author_url //跳转链接
+      // location.href = this.author.author_url //跳转链接
+      location.href = this.blog.blog_aboutme_url //跳转链接
     },
     headmenuGoHomeClick() {
       //回到首页
