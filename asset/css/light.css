@@ -45,7 +45,7 @@ body {
   color: var(--bs-body-color);
 }
 
-.container {
+#container {
   background: var(--bs-gray-200);
 }
 

@@ -54,7 +54,7 @@ body {
   color: var(--mode-dark-color-light-2);
 }
 
-.container {
+#container {
   background: var(--mode-dark-bg-dark-2);
 }
 
