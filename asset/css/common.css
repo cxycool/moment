@@ -10,11 +10,11 @@ body {
   display: none !important;
 }
 
-#app {
+/* #app {
   position: relative;
   height: 100vh;
   overflow: hidden;
-}
+} */
 
 .header {
   position: fixed;
