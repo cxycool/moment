@@ -1,8 +1,8 @@
 /*默认 浅色模式适配*/
 body {
-  font-family: SF Pro SC, SF Pro Text, SF Pro Icons, PingFang SC, "Segoe UI",
-    SegoeUI, "Microsoft YaHei", 微软雅黑, "Helvetica Neue", Helvetica Neue,
-    Helvetica, Arial, sans-serif;
+  font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
+    "Noto Serif SC", 思源宋体, "Segoe UI", SegoeUI, "Microsoft YaHei", 微软雅黑,
+    "Helvetica Neue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: var(--bs-gray-200);
 }
 
