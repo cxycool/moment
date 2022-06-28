@@ -1,4 +1,4 @@
-//日期本地化配置
+//日期本地化配置,中文配置
 function get_dayjs_init() {
   dayjs.locale("zh-cn")
 }
