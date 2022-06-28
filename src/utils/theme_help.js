@@ -23,8 +23,8 @@ function get_theme_init() {
   }
   if (typeof mode_media.addEventListener === "function") {
     mode_media.addEventListener("change", mode_callback)
-  } else if (typeof mode_media.addEventListener === "function") {
-    mode_media.addEventListener(mode_callback)
+  } else if (typeof mode_media.addListener === "function") {
+    mode_media.addListener(mode_callback)
   }
 }
 
