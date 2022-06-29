@@ -1,9 +1,9 @@
 /*默认 浅色模式适配*/
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC",
-    思源黑体, "Segoe UI", "Microsoft YaHei", 微软雅黑, "Noto Sans CJK SC",
-    "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Noto Sans SC", 思源黑体, "Microsoft YaHei", 微软雅黑, "Noto Sans CJK SC",
+    "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   background: var(--bs-gray-200);
 }
 
@@ -281,11 +281,10 @@ body {
 }
 
 .post_main_content {
-  padding-left: 60px;
+  padding: 0.75rem 0.75rem 0 0.75rem;
   overflow: hidden;
 }
 .post_main_content_text {
-  margin-top: 10px;
   font-size: 1.075rem;
   line-height: var(--bs-body-line-height);
 }
@@ -316,6 +315,7 @@ body {
   border-radius: 8px;
   cursor: zoom-in;
   margin-bottom: 5px;
+  margin-left: 7.5%;
 }
 
 .post_main_content_picture {
@@ -381,9 +381,9 @@ body {
 }
 
 .post_main_content_bottom {
-  margin-top: 5px;
+  margin-top: 0px;
   background: var(--bs-white);
-  height: 1px;
+  height: 0px;
 }
 
 .aside_menu {
