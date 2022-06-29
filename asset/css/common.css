@@ -1,7 +1,9 @@
 /*默认 浅色模式适配*/
 body {
-  font-family: "PingFang SC", "Noto Sans SC", 思源黑体, "Segoe UI", SegoeUI, "Microsoft YaHei", 微软雅黑,
-    "Helvetica Neue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC",
+    思源黑体, "Segoe UI", "Microsoft YaHei", 微软雅黑, "Noto Sans CJK SC",
+    "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
   background: var(--bs-gray-200);
 }
 
