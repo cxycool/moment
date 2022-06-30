@@ -54,7 +54,7 @@ const app = new Vue({
       isOpenheadmenu: false, //顶部菜单栏是否打开
       ispullupend: false, //是否上拉加载滚动到底
       ispulldownend: true, //是否下拉刷新最新数据
-      thefirstpost_time: null //首次加载的博客发布时间
+      thefirstpost_number: null //首次加载的最新博客的issue序号
     }
   },
   created() {
@@ -126,11 +126,11 @@ const app = new Vue({
         // this.author.author_name = postlist_owner[0].user.login
         // this.author.author_url = postlist_owner[0].user.html_url
         // this.author.author_avatar_url = postlist_owner[0].user.avatar_url
-
+        this.thefirstpost_number = postlist_owner[0].number
         postlist_owner.forEach((post) => {
           let post_author_nickname = this.author.author_nickname //获取文章作者昵称
           if (this.friends_id.indexOf(post.user.login) > -1) {
-            console.log(this.friends_id.indexOf(post.user.login))
+            // console.log(this.friends_id.indexOf(post.user.login))
             //如果作者是好友，就展示好友昵称
             post_author_nickname =
               this.friends_id.indexOf(post.user.login) > -1
@@ -220,7 +220,7 @@ const app = new Vue({
             // })
             let post_author_nickname = this.author.author_nickname //获取文章作者昵称
             if (this.friends_id.indexOf(post.user.login) > -1) {
-              console.log(this.friends_id.indexOf(post.user.login))
+              // console.log(this.friends_id.indexOf(post.user.login))
               //如果作者是好友，就展示好友昵称
               post_author_nickname =
                 this.friends_id.indexOf(post.user.login) > -1
@@ -253,8 +253,15 @@ const app = new Vue({
         // console.log(document.getElementById("container").style.height)
       })
     },
-    getlastestpostlist(url, page, per_page, filter, state) {
+    async getlastestpostlist() {
+      this.ispulldownend = true
       //下拉刷新事件
+      this.page = 1
+      const url = this.author.author_post_api_url
+      const page = this.page
+      const per_page = this.per_page
+      const filter = this.filter
+      const state = this.state
       const option = {
         url,
         page,
@@ -266,11 +273,6 @@ const app = new Vue({
         const postlist = response.data
         let postlist_owner = [] //自己发布的文章
         if (Array.isArray(postlist) && postlist.length > 0) {
-          // postlist_owner = postlist.filter(
-          //   (post) =>
-          //     post.author_association === this.blog_author_type &&
-          //     post.state === this.state
-          // )
           if (this.show_friend) {
             postlist_owner = postlist.filter(
               (post) =>
@@ -286,50 +288,62 @@ const app = new Vue({
             )
           }
         }
+
         if (Array.isArray(postlist_owner) && postlist_owner.length > 0) {
-          postlist_owner.forEach((post) => {
-            // this.postdata.push({
-            //   avatar_url: post.user.avatar_url,
-            //   html_url: post.user.html_url,
-            //   login: post.user.login,
-            //   created_at: post.created_at,
-            //   title: post.title,
-            //   body: marked.parse(post.body || ""), //解析markdown
-            //   isshowpic: false
-            // })
-            let post_author_nickname = this.author.author_nickname //获取文章作者昵称
-            if (this.friends_id.indexOf(post.user.login) > -1) {
-              console.log(this.friends_id.indexOf(post.user.login))
-              //如果作者是好友，就展示好友昵称
-              post_author_nickname =
-                this.friends_id.indexOf(post.user.login) > -1
-                  ? this.friends_name[this.friends_id.indexOf(post.user.login)]
-                  : post.user.login
-            }
+          // for (let i = 0; i < postlist_owner.length; i++) {
+          //   if (postlist_owner[i].user.login === this.author.author_name) {
+          //     this.author.author_id = postlist_owner[i].user.id
+          //     this.author.author_nickname =
+          //       _config["nickname"] || postlist_owner[i].user.login
+          //     this.author.author_name = postlist_owner[i].user.login
+          //     this.author.author_url = postlist_owner[i].user.html_url
+          //     this.author.author_avatar_url = postlist_owner[i].user.avatar_url
+          //     break
+          //   }
+          // }
 
-            this.postdata.push({
-              avatar_url: post.user.avatar_url,
-              post_author_nickname: post_author_nickname,
-              html_url: post.user.html_url,
-              login: post.user.login,
-              created_at: post.created_at,
-              title: post.title,
-              post_url: post.html_url,
-              body: marked.parse(post.body || ""), //解析markdown
-              isshowpic: false
+          // this.author.author_id = postlist_owner[0].user.id
+          // this.author.author_nickname =
+          //   _config["nickname"] || postlist_owner[0].user.login
+          // this.author.author_name = postlist_owner[0].user.login
+          // this.author.author_url = postlist_owner[0].user.html_url
+          // this.author.author_avatar_url = postlist_owner[0].user.avatar_url
+          if (
+            postlist_owner[0].number &&
+            (postlist_owner[0].number > this.thefirstpost_number ||
+              !this.thefirstpost_number) //有新增数据，刷新页面
+          ) {
+            this.postdata = [] //清空
+            postlist_owner.forEach((post) => {
+              let post_author_nickname = this.author.author_nickname //获取文章作者昵称
+              if (this.friends_id.indexOf(post.user.login) > -1) {
+                // console.log(this.friends_id.indexOf(post.user.login))
+                //如果作者是好友，就展示好友昵称
+                post_author_nickname =
+                  this.friends_id.indexOf(post.user.login) > -1
+                    ? this.friends_name[
+                        this.friends_id.indexOf(post.user.login)
+                      ]
+                    : post.user.login
+              }
+              if (post.user) {
+              }
+              this.postdata.push({
+                avatar_url: post.user.avatar_url,
+                post_author_nickname: post_author_nickname,
+                html_url: post.user.html_url,
+                login: post.user.login,
+                created_at: post.created_at,
+                title: post.title,
+                post_url: post.html_url,
+                body: marked.parse(post.body || ""), //解析markdown
+                isshowpic: false
+              })
             })
-          })
-
-          if (this.BS) {
-            this.BS.finishPullDown()
           }
-
-          this.page = parseInt(this.page) + 1
-        } else {
-          this.ispulldownend = !this.ispulldownend
         }
-
-        // console.log(document.getElementById("container").style.height)
+        this.ispulldownend = false
+        this.BS && this.BS.finishPullDown()
       })
     },
     getpostlistdetail(post_url) {
@@ -364,7 +378,7 @@ const app = new Vue({
       this.BS = BetterScroll.createBScroll("#container", {
         probeType: 3,
         pullUpLoad: true,
-        // pullDownRefresh: true,
+        pullDownRefresh: true,
         click: true,
         // scrollY: true,
         scrollbar: true
@@ -386,16 +400,17 @@ const app = new Vue({
         this.getpostlist(url, page, per_page, filter, state)
       })
 
-      // this.BS.on("pullingDown", () => {
-      //   //下拉刷新
-      //   console.log("下拉刷新")
-      //   const url = this.author.author_post_api_url
-      //   const page = 1
-      //   const per_page = this.per_page
-      //   const filter = this.filter
-      //   const state = this.state
-      //   this.getlastestpostlist(url, page, per_page, filter, state)
-      // })
+      this.BS.on("pullingDown", async () => {
+        await this.getlastestpostlist()
+        let settimeout = null
+        if (settimeout) {
+          console.log(123)
+          clearTimeout(settimeout)
+        }
+        settimeout = setTimeout(() => {
+          this.ispulldownend = true
+        }, 500)
+      })
     },
     //滚动内容实时监听位置
     scrollPosition(position) {
