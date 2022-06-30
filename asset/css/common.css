@@ -191,6 +191,7 @@ body {
   margin-bottom: 0;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 .li_postlist {
@@ -537,4 +538,15 @@ body {
 .ball-beat > div:nth-child(2n-1) {
   -webkit-animation-delay: 0.35s !important;
   animation-delay: 0.35s !important;
+}
+
+.pull-up-tip {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  color: var(--bs-body-color);
+  font-size: 1rem;
 }
