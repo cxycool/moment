@@ -109,3 +109,8 @@ body {
 #loading-mask {
   background: var(--mode-dark-bg-dark-2);
 }
+
+.pull-down-tip,
+.pull-up-tip {
+  color: var(--mode-dark-color-light-3);
+}

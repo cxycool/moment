@@ -99,3 +99,8 @@ body {
 #loading-mask {
   background: var(--bs-gray-200);
 }
+
+.pull-down-tip,
+.pull-up-tip {
+  color: var(--bs-body-color);
+}
