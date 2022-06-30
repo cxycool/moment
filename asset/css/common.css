@@ -540,6 +540,17 @@ body {
   animation-delay: 0.35s !important;
 }
 
+.pull-down-tip {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 55px;
+  width: 100%;
+  text-align: center;
+  color: var(--bs-body-color);
+  font-size: 1rem;
+}
+
 .pull-up-tip {
   position: fixed;
   z-index: 1;
@@ -549,4 +560,22 @@ body {
   text-align: center;
   color: var(--bs-body-color);
   font-size: 1rem;
+}
+
+.pull-tip-enter-active {
+  animation: pull-tip-in 0.5s;
+}
+.pull-tip-leave-active {
+  animation: pull-tip-in 0.5s reverse;
+}
+@keyframes pull-tip-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
 }

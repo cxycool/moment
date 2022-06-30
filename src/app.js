@@ -51,7 +51,10 @@ const app = new Vue({
       isShowbacktop: false, //是否显示返回顶部按钮
       blogtheme: "light", //主题，默认浅色
       BS: null, //滚动条对象
-      isOpenheadmenu: false //顶部菜单栏是否打开
+      isOpenheadmenu: false, //顶部菜单栏是否打开
+      ispullupend: false, //是否上拉加载滚动到底
+      ispulldownend: true, //是否下拉刷新最新数据
+      thefirstpost_time: null //首次加载的博客发布时间
     }
   },
   created() {
@@ -243,6 +246,87 @@ const app = new Vue({
           }
 
           this.page = parseInt(this.page) + 1
+        } else {
+          this.ispullupend = true
+        }
+
+        // console.log(document.getElementById("container").style.height)
+      })
+    },
+    getlastestpostlist(url, page, per_page, filter, state) {
+      //下拉刷新事件
+      const option = {
+        url,
+        page,
+        per_page,
+        filter,
+        state
+      }
+      get_post_data(option, (response) => {
+        const postlist = response.data
+        let postlist_owner = [] //自己发布的文章
+        if (Array.isArray(postlist) && postlist.length > 0) {
+          // postlist_owner = postlist.filter(
+          //   (post) =>
+          //     post.author_association === this.blog_author_type &&
+          //     post.state === this.state
+          // )
+          if (this.show_friend) {
+            postlist_owner = postlist.filter(
+              (post) =>
+                (post.author_association === this.blog_author_type ||
+                  this.friends_id.includes(post.user.login)) &&
+                post.state === this.state
+            )
+          } else {
+            postlist_owner = postlist.filter(
+              (post) =>
+                post.author_association === this.blog_author_type &&
+                post.state === this.state
+            )
+          }
+        }
+        if (Array.isArray(postlist_owner) && postlist_owner.length > 0) {
+          postlist_owner.forEach((post) => {
+            // this.postdata.push({
+            //   avatar_url: post.user.avatar_url,
+            //   html_url: post.user.html_url,
+            //   login: post.user.login,
+            //   created_at: post.created_at,
+            //   title: post.title,
+            //   body: marked.parse(post.body || ""), //解析markdown
+            //   isshowpic: false
+            // })
+            let post_author_nickname = this.author.author_nickname //获取文章作者昵称
+            if (this.friends_id.indexOf(post.user.login) > -1) {
+              console.log(this.friends_id.indexOf(post.user.login))
+              //如果作者是好友，就展示好友昵称
+              post_author_nickname =
+                this.friends_id.indexOf(post.user.login) > -1
+                  ? this.friends_name[this.friends_id.indexOf(post.user.login)]
+                  : post.user.login
+            }
+
+            this.postdata.push({
+              avatar_url: post.user.avatar_url,
+              post_author_nickname: post_author_nickname,
+              html_url: post.user.html_url,
+              login: post.user.login,
+              created_at: post.created_at,
+              title: post.title,
+              post_url: post.html_url,
+              body: marked.parse(post.body || ""), //解析markdown
+              isshowpic: false
+            })
+          })
+
+          if (this.BS) {
+            this.BS.finishPullDown()
+          }
+
+          this.page = parseInt(this.page) + 1
+        } else {
+          this.ispulldownend = !this.ispulldownend
         }
 
         // console.log(document.getElementById("container").style.height)
@@ -280,6 +364,7 @@ const app = new Vue({
       this.BS = BetterScroll.createBScroll("#container", {
         probeType: 3,
         pullUpLoad: true,
+        pullDownRefresh: true,
         click: true,
         // scrollY: true,
         scrollbar: true
@@ -300,6 +385,17 @@ const app = new Vue({
         const state = this.state
         this.getpostlist(url, page, per_page, filter, state)
       })
+
+      // this.BS.on("pullingDown", () => {
+      //   //下拉刷新
+      //   console.log("下拉刷新")
+      //   const url = this.author.author_post_api_url
+      //   const page = 1
+      //   const per_page = this.per_page
+      //   const filter = this.filter
+      //   const state = this.state
+      //   this.getlastestpostlist(url, page, per_page, filter, state)
+      // })
     },
     //滚动内容实时监听位置
     scrollPosition(position) {
