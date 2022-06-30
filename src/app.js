@@ -243,6 +243,7 @@ const app = new Vue({
 
           if (this.BS) {
             this.BS.finishPullUp()
+            this.ispullupend = false
           }
 
           this.page = parseInt(this.page) + 1
@@ -253,7 +254,7 @@ const app = new Vue({
         // console.log(document.getElementById("container").style.height)
       })
     },
-    async getlastestpostlist() {
+    getlastestpostlist() {
       this.ispulldownend = true
       //下拉刷新事件
       this.page = 1
@@ -340,6 +341,8 @@ const app = new Vue({
                 isshowpic: false
               })
             })
+            this.BS && this.BS.finishPullUp() //页面更新后，重新赋予上拉加载更多
+            this.ispullupend = false
           }
         }
         this.ispulldownend = false
@@ -400,11 +403,10 @@ const app = new Vue({
         this.getpostlist(url, page, per_page, filter, state)
       })
 
-      this.BS.on("pullingDown", async () => {
-        await this.getlastestpostlist()
+      this.BS.on("pullingDown", () => {
+        this.getlastestpostlist()
         let settimeout = null
         if (settimeout) {
-          console.log(123)
           clearTimeout(settimeout)
         }
         settimeout = setTimeout(() => {
