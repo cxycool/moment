@@ -311,7 +311,7 @@ const app = new Vue({
           // this.author.author_avatar_url = postlist_owner[0].user.avatar_url
           if (
             postlist_owner[0].number &&
-            (postlist_owner[0].number > this.thefirstpost_number ||
+            (postlist_owner[0].number !== this.thefirstpost_number ||
               !this.thefirstpost_number) //有新增数据，刷新页面
           ) {
             this.postdata = [] //清空
@@ -343,6 +343,7 @@ const app = new Vue({
             })
             this.BS && this.BS.finishPullUp() //页面更新后，重新赋予上拉加载更多
             this.ispullupend = false
+            this.thefirstpost_number = postlist_owner[0].number //更新最新issue序号
           }
         }
         this.ispulldownend = false
