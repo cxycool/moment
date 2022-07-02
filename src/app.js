@@ -386,6 +386,7 @@ const app = new Vue({
         click: true,
         // scrollY: true,
         scrollbar: true
+        // useTransition: false
       })
 
       this.getAllImgLoad()
