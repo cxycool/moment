@@ -379,7 +379,19 @@ const app = new Vue({
       //   pullUpLoad: true
       // })
 
-      this.BS = BetterScroll.createBScroll("#container", {
+      // this.BS = BetterScroll.createBScroll("#container", {
+      //   probeType: 3,
+      //   pullUpLoad: true,
+      //   pullDownRefresh: true,
+      //   click: true,
+      //   // scrollY: true,
+      //   scrollbar: true
+      //   // useTransition: false
+      // })
+      BScroll.use(PullUp)
+      BScroll.use(PullDown)
+      BScroll.use(ScrollBar)
+      this.BS = new BScroll("#container", {
         probeType: 3,
         pullUpLoad: true,
         pullDownRefresh: true,
