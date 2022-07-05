@@ -54,6 +54,7 @@ const app = new Vue({
       isOpenheadmenu: false, //顶部菜单栏是否打开
       ispullupend: false, //是否上拉加载滚动到底
       ispulldownend: true, //是否下拉刷新最新数据
+      isshowpulldown: false, //是否显示下拉刷新文字提示
       thefirstpost_number: null //首次加载的最新博客的issue序号
     }
   },
@@ -255,6 +256,7 @@ const app = new Vue({
       })
     },
     getlastestpostlist() {
+      this.isshowpulldown = true
       this.ispulldownend = true
       //下拉刷新事件
       this.page = 1
@@ -427,6 +429,18 @@ const app = new Vue({
           this.ispulldownend = true
         }, 500)
       })
+      this.BS.on("enterThreshold", () => {
+        // 避免回弹动画触发
+        if (this.BS.y >= -90) {
+          if (!this.isshowpulldown) {
+            this.isshowpulldown = true
+          } else {
+            return false
+          }
+        } else {
+          return false
+        }
+      })
     },
     //滚动内容实时监听位置
     scrollPosition(position) {
@@ -440,6 +454,7 @@ const app = new Vue({
     toTopClick() {
       //滚动条回到顶部
       if (this.BS) {
+        this.isshowpulldown = false
         this.BS.scrollTo(0, 0, 750)
       }
     },

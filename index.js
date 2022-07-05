@@ -3,7 +3,7 @@
  */
 
 //滚动容器的wrapper初始化
-get_container_height_init()
+// get_container_height_init()
 
 //主题初始化
 get_theme_init()
