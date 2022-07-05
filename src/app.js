@@ -431,7 +431,10 @@ const app = new Vue({
       })
       this.BS.on("enterThreshold", () => {
         // 避免回弹动画触发
-        if (this.BS.y >= -90) {
+        if (!this.BS.pending) {
+          this.isshowpulldown = false
+        }
+        if (!this.BS.pending && this.BS.y >= -90) {
           if (!this.isshowpulldown) {
             this.isshowpulldown = true
           } else {
