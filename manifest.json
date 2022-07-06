@@ -1,7 +1,7 @@
 {
   "name": "我的随笔时光机",
   "short_name": "moment",
-  "start_url": "/",
+  "start_url": "https://cxycool.github.io/moment/",
   "display": "standalone",
   "background_color": "#E9ECEF",
   "description": "走走停停，不如定定；想想思思，不如写写",
