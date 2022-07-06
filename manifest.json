@@ -1,0 +1,16 @@
+{
+  "name": "我的随笔时光机",
+  "short_name": "moment",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E9ECEF",
+  "description": "走走停停，不如定定；想想思思，不如写写",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}
