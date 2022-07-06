@@ -9,7 +9,7 @@ const app = new Vue({
         blog_title: _config["blog_name"], //博客名称
         blog_url: `https://${_config["owner"]}.github.io/${_config["repo"]}`, //博客网址
         blog_pub_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues`, //博客原始文章地址
-        blog_new_post_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues/new`, //博客发表地址
+        blog_new_post_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues/new/choose`, //博客发表地址
         blog_config_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/src/config.js`, //博客配置文件地址
         blog_help_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/README.md`, //博客帮助文档
         blog_aboutme_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/About.md` //关于我的文档
@@ -548,7 +548,7 @@ const app = new Vue({
     updateData() {
       //动态修改data
       this.blog.blog_pub_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/issues`
-      this.blog.blog_new_post_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/issues/new`
+      this.blog.blog_new_post_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/issues/new/choose`
       this.blog.blog_config_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/blob/main/src/config.js`
       this.blog.blog_help_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/blob/main/README.md`
       this.blog.blog_aboutme_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/blob/main/About.md`
