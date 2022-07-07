@@ -61,6 +61,8 @@ const app = new Vue({
   },
   created() {
     document.title = this.blog.blog_title
+    document.getElementById("apple-mobile-web-app-title").content =
+      _config.mainfest.apple_mobile_web_app_title
   },
   mounted() {
     const url = this.author.author_post_api_url

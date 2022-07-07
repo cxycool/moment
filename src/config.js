@@ -14,5 +14,8 @@ var _config = {
   per_page: 20, // 默认一页显示几篇文章
   state: "open", //文章状态 open closed all
   github_url: "github.com",
-  github_ip: "20.205.243.166"
+  github_ip: "20.205.243.166",
+  mainfest: {
+    apple_mobile_web_app_title: "我的隨筆時光機" //iPhone的桌面应用的标题
+  }
 }
