@@ -52,7 +52,7 @@
             </a>
           </span>
           <div class="blog_menu" v-cloak>
-            <a href="#" @click="headmenuClick">
+            <a href="javascript:void(0)" @click="headmenuClick">
               <div class="head_menu_cpn head_menu_cpn_set" title="菜单">
                 <transition name="head-menu" mode="out-in">
                   <div
@@ -106,7 +106,8 @@
                       </svg>
                     </div>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
+                      target="_blank"
                       class="head_menu_list_item"
                       @click.prevent="headmenuNewPostClick"
                     >
@@ -130,7 +131,8 @@
                       </svg>
                     </div>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
+                      target="_blank"
                       class="head_menu_list_item"
                       @click.prevent="headmenuEditPostClick"
                     >
@@ -173,7 +175,7 @@
                       </svg>
                     </div>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
                       class="head_menu_list_item"
                       @click.prevent="headmenuEditConfigClick"
                     >
@@ -200,7 +202,8 @@
                       </svg>
                     </div>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
+                      target="_blank"
                       class="head_menu_list_item"
                       @click.prevent="headmenuViewHelpClick"
                     >
@@ -221,7 +224,8 @@
                       </svg>
                     </div>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
+                      target="_blank"
                       class="head_menu_list_item"
                       @click.prevent="headmenuAboutMeClick"
                     >
@@ -245,7 +249,7 @@
                       </svg>
                     </div>
                     <a
-                      href="#"
+                      href="javascript:void(0)"
                       class="head_menu_list_item"
                       @click.prevent="headmenuGoHomeClick"
                     >
@@ -356,7 +360,7 @@
           已经滚到底啦ヾ(•ω•`)o
         </div>
       </transition>
-      <div id="loading-mask">
+      <div id="loading-mask" v-show="isShowLoadingMask">
         <div id="Loading">
           <div class="loader-inner ball-beat">
             <div></div>

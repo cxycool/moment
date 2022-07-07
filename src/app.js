@@ -55,25 +55,12 @@ const app = new Vue({
       ispullupend: false, //是否上拉加载滚动到底
       ispulldownend: true, //是否下拉刷新最新数据
       isshowpulldown: false, //是否显示下拉刷新文字提示
-      thefirstpost_number: null //首次加载的最新博客的issue序号
+      thefirstpost_number: null, //首次加载的最新博客的issue序号
+      isShowLoadingMask: true //是否显示loading遮罩
     }
   },
   created() {
-    // this.blog.blog_title = _config["blog_name"]
-    // this.blog.blog_url = `https://${_config["owner"]}.github.io/${_config["repo"]}`
-    // this.blog.blog_pub_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/issues`
     document.title = this.blog.blog_title
-    // this.access_token = _config["access_token"]
-    // this.author.author_name = _config["owner"]
-    // this.author.author_nickname = _config["nickname"] || _config["owner"]
-    // this.per_page = _config["per_page"]
-    // this.state = _config["state"]
-    // this.blog_author_type = _config["blog_author_type"]
-    // this.show_friend = _config["show_friend"]
-    // this.friends_id = _config["friends_id"]
-    // this.friends_name = _config["friends_name"]
-    // this.author.author_url = `https://${_config["github_url"]}/${_config["owner"]}`
-    // this.author.author_avatar_url = `https://avatars.githubusercontent.com/${_config["owner"]}?size=64`
   },
   mounted() {
     const url = this.author.author_post_api_url
@@ -151,10 +138,9 @@ const app = new Vue({
           })
         })
       }
+
       //隐藏动画
-      document.getElementById("loading-mask").style.display = "none"
-      // if (document.getElementById("Loading"))
-      //   document.getElementById("Loading").remove()
+      this.isShowLoadingMask = false
 
       this.$nextTick(() => {
         this.getscroll() //滚动条
@@ -490,17 +476,11 @@ const app = new Vue({
     headmenuClick() {
       //顶部菜单栏是否展开或者折叠
       this.isOpenheadmenu = !this.isOpenheadmenu
-      // if (this.isOpenheadmenu) {
-      //   //菜单栏展开
-      //   document.getElementById("app").style.zIndex = 103
-      // } else {
-      //   document.getElementById("app").style.zIndex = 100
-      // }
     },
     headmenuNewPostClick() {
       //顶部菜单栏发表动态
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
-      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      this.isShowLoadingMask = true //显示遮罩层
       // get_url_valid(`https://api.github.com/`, (response) => {
       //   console.log(response.status)
       //   if (response.status === 200) { //判断是否可以访问
@@ -511,39 +491,49 @@ const app = new Vue({
       //     location.href = this.blog.blog_new_post_url //跳转链接
       //   }
       // })
-      location.href = this.blog.blog_new_post_url //跳转链接
+      // location.href = this.blog.blog_new_post_url //跳转链接
+      window.open(this.blog.blog_new_post_url) //跳转链接
+      this.isShowLoadingMask = false //隐藏遮罩层
     },
     headmenuEditPostClick() {
       //编辑动态
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
-      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
-      location.href = this.blog.blog_pub_url //跳转链接
+      this.isShowLoadingMask = true //显示遮罩层
+      // location.href = this.blog.blog_pub_url //跳转链接
+      window.open(this.blog.blog_pub_url) //跳转链接
+      this.isShowLoadingMask = false //隐藏遮罩层
     },
     headmenuEditConfigClick() {
       //修改配置
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
-      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
-      location.href = this.blog.blog_config_url //跳转链接
+      this.isShowLoadingMask = true //显示遮罩层
+      // location.href = this.blog.blog_config_url //跳转链接
+      window.open(this.blog.blog_config_url) //跳转链接
+      this.isShowLoadingMask = false //隐藏遮罩层
     },
     headmenuViewHelpClick() {
       //帮助文档
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
-      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
-      location.href = this.blog.blog_help_url //跳转链接
+      this.isShowLoadingMask = true //显示遮罩层
+      // location.href = this.blog.blog_help_url //跳转链接
+      window.open(this.blog.blog_help_url) //跳转链接
+      this.isShowLoadingMask = false //隐藏遮罩层
     },
     headmenuAboutMeClick() {
       //关于
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
-      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      this.isShowLoadingMask = true //显示遮罩层
       // location.href = this.author.author_url //跳转链接
-      location.href = this.blog.blog_aboutme_url //跳转链接
+      // location.href = this.blog.blog_aboutme_url //跳转链接
+      window.open(this.blog.blog_aboutme_url) //跳转链接
+      this.isShowLoadingMask = false //隐藏遮罩层
     },
     headmenuGoHomeClick() {
       //回到首页
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
-      document.getElementById("loading-mask").style.display = "block" //显示遮罩层
+      this.isShowLoadingMask = true //显示遮罩层
       location.href = this.blog.blog_url //跳转链接
-      document.getElementById("loading-mask").style.display = "none" //隐藏遮罩层
+      this.isShowLoadingMask = false //隐藏遮罩层
     },
     updateData() {
       //动态修改data
