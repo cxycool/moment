@@ -1,9 +1,9 @@
 var _config = {
-  blog_name: "我的随笔时光机", // 博客名称
+  blog_name: "浮生二三四", // 博客名称
   blog_url: "", //博客地址
   blog_pub_url: "", //博客发布地址
   owner: "cxycool", // github 用户名
-  nickname: "什么名字呢", //用户昵称
+  nickname: "秋田の狗子", //用户昵称
   repo: "moment", // github 中对应仓库名
   blog_author_type: "OWNER", //发布博客的用户 默认 OWNER
   show_friend: false, //是否展示好友
@@ -16,6 +16,6 @@ var _config = {
   github_url: "github.com",
   github_ip: "20.205.243.166",
   mainfest: {
-    apple_mobile_web_app_title: "我的隨筆時光機" //iPhone的桌面应用的标题
+    apple_mobile_web_app_title: "Moment" //iPhone的桌面应用的标题
   }
 }
