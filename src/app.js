@@ -521,9 +521,9 @@ const app = new Vue({
     headmenuGoHomeClick() {
       //回到首页
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
-      this.isShowLoadingMask = true //显示遮罩层
+      // this.isShowLoadingMask = true //显示遮罩层
       location.href = this.blog.blog_url //跳转链接
-      this.isShowLoadingMask = false //隐藏遮罩层
+      // this.isShowLoadingMask = false //隐藏遮罩层
     },
     updateData() {
       //动态修改data
