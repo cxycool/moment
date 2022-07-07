@@ -11,6 +11,7 @@ const app = new Vue({
         blog_pub_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues`, //博客原始文章地址
         blog_new_post_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/issues/new/choose`, //博客发表地址
         blog_config_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/src/config.js`, //博客配置文件地址
+        blog_manifest_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/manifest.json`, //博客manifest.json文件地址
         blog_help_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/README.md`, //博客帮助文档
         blog_aboutme_url: `https://github.com/${_config["owner"]}/${_config["repo"]}/blob/main/About.md` //关于我的文档
       },
@@ -507,6 +508,12 @@ const app = new Vue({
       this.isShowLoadingMask = true //显示遮罩层
       location.href = this.blog.blog_config_url //跳转链接
     },
+    headmenuEditManifestClick() {
+      //应用设置
+      this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
+      this.isShowLoadingMask = true //显示遮罩层
+      location.href = this.blog.blog_manifest_url //跳转链接
+    },
     headmenuViewHelpClick() {
       //帮助文档
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
@@ -532,6 +539,7 @@ const app = new Vue({
       this.blog.blog_pub_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/issues`
       this.blog.blog_new_post_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/issues/new/choose`
       this.blog.blog_config_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/blob/main/src/config.js`
+      this.blog.blog_manifest_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/blob/main/manifest.json`
       this.blog.blog_help_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/blob/main/README.md`
       this.blog.blog_aboutme_url = `https://${_config["github_url"]}/${_config["owner"]}/${_config["repo"]}/blob/main/About.md`
 
