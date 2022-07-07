@@ -491,42 +491,32 @@ const app = new Vue({
       //     location.href = this.blog.blog_new_post_url //跳转链接
       //   }
       // })
-      // location.href = this.blog.blog_new_post_url //跳转链接
-      window.open(this.blog.blog_new_post_url) //跳转链接
-      this.isShowLoadingMask = false //隐藏遮罩层
+      location.href = this.blog.blog_new_post_url //跳转链接
     },
     headmenuEditPostClick() {
       //编辑动态
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
       this.isShowLoadingMask = true //显示遮罩层
-      // location.href = this.blog.blog_pub_url //跳转链接
-      window.open(this.blog.blog_pub_url) //跳转链接
-      this.isShowLoadingMask = false //隐藏遮罩层
+      location.href = this.blog.blog_pub_url //跳转链接
     },
     headmenuEditConfigClick() {
       //修改配置
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
       this.isShowLoadingMask = true //显示遮罩层
-      // location.href = this.blog.blog_config_url //跳转链接
-      window.open(this.blog.blog_config_url) //跳转链接
-      this.isShowLoadingMask = false //隐藏遮罩层
+      location.href = this.blog.blog_config_url //跳转链接
     },
     headmenuViewHelpClick() {
       //帮助文档
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
       this.isShowLoadingMask = true //显示遮罩层
-      // location.href = this.blog.blog_help_url //跳转链接
-      window.open(this.blog.blog_help_url) //跳转链接
-      this.isShowLoadingMask = false //隐藏遮罩层
+      location.href = this.blog.blog_help_url //跳转链接
     },
     headmenuAboutMeClick() {
       //关于
       this.isOpenheadmenu = !this.isOpenheadmenu //隐藏菜单栏
       this.isShowLoadingMask = true //显示遮罩层
-      // location.href = this.author.author_url //跳转链接
-      // location.href = this.blog.blog_aboutme_url //跳转链接
-      window.open(this.blog.blog_aboutme_url) //跳转链接
-      this.isShowLoadingMask = false //隐藏遮罩层
+      location.href = this.blog.blog_aboutme_url //跳转链接
+      // window.open(this.blog.blog_aboutme_url) //跳转链接
     },
     headmenuGoHomeClick() {
       //回到首页
