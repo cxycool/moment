@@ -3,7 +3,7 @@ var _config = {
   blog_url: "", //博客地址
   blog_pub_url: "", //博客发布地址
   owner: "cxycool", // github 用户名
-  nickname: "秋田の狗子", //用户昵称
+  nickname: "什么名字呢", //用户昵称
   repo: "moment", // github 中对应仓库名
   blog_author_type: "OWNER", //发布博客的用户 默认 OWNER
   show_friend: false, //是否展示好友
