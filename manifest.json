@@ -3,7 +3,7 @@
   "short_name": "Moment",
   "start_url": "https://cxycool.github.io/moment/",
   "display": "standalone",
-  "background_color": "#E9ECEF",
+  "background_color": "rgba(233,236,239,0.85)",
   "description": "走走停停，不如定定；想想思思，不如写写",
   "orientation": "portrait-primary",
   "icons": [
