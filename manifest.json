@@ -1,18 +1,14 @@
 {
+  "lang": "zh-CN",
   "name": "浮生二三四",
   "short_name": "Moment",
-  "start_url": "https://cxycool.github.io/moment/",
-  "id": "/moment/",
+  "start_url": "/moment/",
+  "scope": "/moment/",
   "display": "standalone",
   "background_color": "#E9ECEF",
   "description": "走走停停，不如定定；想想思思，不如写写",
   "orientation": "portrait-primary",
   "icons": [
-    {
-      "src": "./favicon.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
     {
       "src": "./icon144.png",
       "sizes": "144x144",
