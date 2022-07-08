@@ -3,7 +3,7 @@
   "name": "浮生二三四",
   "short_name": "Moment",
   "start_url": "/moment/",
-  "scope": "/moment/",
+  "id": "/moment/",
   "display": "standalone",
   "background_color": "#E9ECEF",
   "description": "走走停停，不如定定；想想思思，不如写写",
