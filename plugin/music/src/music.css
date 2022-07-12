@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Noto Sans SC", 思源黑体, "Microsoft YaHei", 微软雅黑, "Noto Sans CJK SC",
+    "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background: var(--bs-gray-200);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[v-cloak] {
+  display: none !important;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.aplayer {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Noto Sans SC", 思源黑体, "Microsoft YaHei", 微软雅黑, "Noto Sans CJK SC",
+    "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin: 0px;
+}
