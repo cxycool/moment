@@ -10,5 +10,5 @@ body {
 
 .cp-volume-button,
 .cp-mode-button {
-  display: none;
+  display: none !important;
 }
