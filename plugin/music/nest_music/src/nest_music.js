@@ -7,11 +7,9 @@ function GetQueryString(name) {
 }
 
 //获取歌曲信息
-const music_id = GetQueryString("id") //歌曲id
+const music_id = GetQueryString("id").trim() //歌曲id
 const music_name = GetQueryString("name") || " " //歌曲name
 const music_artist = GetQueryString("artist") || " " //歌手
-console.log(music_name)
-console.log(music_artist)
 //音乐实例
 if (music_id) {
   let player = new cplayer({
@@ -23,8 +21,8 @@ if (music_id) {
       {
         src: `http://music.163.com/song/media/outer/url?id=${music_id}.mp3`,
         // poster: "封面链接...",
-        name: music_name,
-        artist: music_artist
+        name: music_name.trim(),
+        artist: music_artist.trim()
         // lyric: "歌词...",
         // sublyric: "副歌词，一般为翻译...",
         // album: "专辑，唱片..."
