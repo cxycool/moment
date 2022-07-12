@@ -12,8 +12,4 @@ assignees: cxycool
 
 <iframe class="musicplayer" src="./plugin/music/nest_music/nest_music.html?
  id=【网易云音乐ID】
-&name=
-【网易云音乐歌名】
-&artist=
-【网易云音乐歌手】
 "></iframe>
