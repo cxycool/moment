@@ -23,7 +23,7 @@ body:
       placeholder: ex. 我很快乐
     validations:
       required: true
- - type: input
+  - type: input
     id: key3
     attributes:
       label: 歌手
