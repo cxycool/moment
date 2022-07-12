@@ -4,7 +4,7 @@ function GetQueryString(name) {
   console.log(window.location)
   console.log(window.location.search)
   console.log(decodeURI(window.location.search))
-  console.log(decodeURI(window.location.search).trim())
+  console.log(decodeURI(window.location.search).replace(/s*/g, ""))
   var r = window.location.search.substr(1).match(reg)
   if (r != null) return decodeURI(r[2])
   return null
