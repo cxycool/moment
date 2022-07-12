@@ -1,17 +1,14 @@
 //获取链接参数
 function GetQueryString(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
-  console.log(window.location)
-  console.log(window.location.search)
-  console.log(decodeURI(window.location.search))
-  console.log(decodeURI(window.location.search).replace(/\s*/g, ""))
-  var r = window.location.search.substr(1).match(reg)
+  var q = decodeURI(window.location.search).replace(/\s*/g, "")
+  var r = q.substr(1).match(reg)
   if (r != null) return decodeURI(r[2])
   return null
 }
 
 //获取歌曲信息
-const music_id = GetQueryString("id").trim() //歌曲id
+const music_id = GetQueryString("id") //歌曲id
 const music_name = GetQueryString("name") || " " //歌曲name
 const music_artist = GetQueryString("artist") || " " //歌手
 //音乐实例
