@@ -10,6 +10,6 @@ assignees: cxycool
 <!--可以写写描述文字-->
 
 
-<iframe class="musicplayer" src="./plugin/music/nest_music/nest_music.html?
+<iframe class="musicplayer" src="./plugin/music/music.html?
  id=【网易云音乐ID】
 "></iframe>
