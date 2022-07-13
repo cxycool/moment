@@ -12,5 +12,5 @@ assignees: cxycool
 
 <iframe class="musicplayer" src="./plugin/music/music.html?
  id=【网易云音乐ID】
- &platform=“N”
+ &platform=N
 "></iframe>
