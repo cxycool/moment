@@ -14,16 +14,23 @@ const music_platform = GetQueryString("platform") //歌曲来源
 if (music_platform === "Q" || music_platform === "q") {
   //QQ
   if (music_id) {
-    document.getElementById("music_container").innerHTML = `<meting-js
-    auto="https://y.qq.com/n/yqq/song/${music_id}.html">
-  </meting-js>`
+    document.getElementById(
+      "music_container"
+    ).innerHTML = `<meting-js server="tencent" type="song" preload="none" id="${music_id}"></meting-js>`
   }
 } else if (music_platform === "N" || music_platform === "n") {
   //网易云音乐
   if (music_id) {
     document.getElementById(
       "music_container"
-    ).innerHTML = `<meting-js server="netease" type="song" id="${music_id}"></meting-js>`
+    ).innerHTML = `<meting-js server="netease" type="song" preload="none" id="${music_id}"></meting-js>`
+  }
+} else if (music_platform === "K" || music_platform === "k") {
+  //酷狗音乐
+  if (music_id) {
+    document.getElementById(
+      "music_container"
+    ).innerHTML = `<meting-js server="kugou" type="song" preload="none" id="${music_id}"></meting-js>`
   }
 } else {
   document.getElementById("music_container").innerHTML = "暂无歌曲"
