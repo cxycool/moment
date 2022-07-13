@@ -11,6 +11,8 @@ assignees: cxycool
 
 
 <iframe class="musicplayer" src="./plugin/music/music.html?
- id=【QQ音乐ID】
+
+ id=      【QQ音乐ID】  
+
  &platform=Q
 "></iframe>
