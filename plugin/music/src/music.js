@@ -41,7 +41,7 @@ if (music_platform === "Q" || music_platform === "q") {
     preload="none"
     name="${name}"
     artist="${music_artist}"
-    url="https://antiserver.kuwo.cn/anti.s?rid=MUSIC_${music_id}&response=res&format=mp3|aac&type=convert_url&br=320kmp3&callback=getlink&jpcallback=getlink.mp3"
+    url="//antiserver.kuwo.cn/anti.s?rid=MUSIC_${music_id}&response=res&format=mp3|aac&type=convert_url&br=320kmp3&callback=getlink&jpcallback=getlink.mp3"
     cover="./src/music.svg">
   </meting-js>`
   }
