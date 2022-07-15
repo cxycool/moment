@@ -388,11 +388,8 @@ const app = new Vue({
         pullDownRefresh: true,
         click: true,
         // scrollY: true,
-        scrollbar: true,
+        scrollbar: true
         // useTransition: false
-        preventDefaultException: {
-          className: /(^|\s)test(\s|$)/
-        }
       })
 
       this.getAllImgLoad()

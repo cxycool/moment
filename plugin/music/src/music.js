@@ -32,6 +32,19 @@ if (music_platform === "Q" || music_platform === "q") {
       "music_container"
     ).innerHTML = `<meting-js server="kugou" type="song" preload="none" id="${music_id}"></meting-js>`
   }
+} else if (music_platform === "W" || music_platform === "w") {
+  //酷我音乐
+  if (music_id) {
+    const name = GetQueryString("name") //歌名
+    const music_artist = GetQueryString("artist") //歌手
+    document.getElementById("music_container").innerHTML = `<meting-js
+    preload="none"
+    name="${name}"
+    artist="${music_artist}"
+    url="https://antiserver.kuwo.cn/anti.s?rid=MUSIC_${music_id}&response=res&format=mp3|aac&type=convert_url&br=320kmp3&callback=getlink&jpcallback=getlink.mp3"
+    cover="./src/music.svg">
+  </meting-js>`
+  }
 } else {
   document.getElementById("music_container").innerHTML = "暂无歌曲"
 }
