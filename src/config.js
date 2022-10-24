@@ -11,8 +11,8 @@ var _config = {
   friends_name: [], //好友name
   friends_access_token: [], //好友token
   access_token:
-    "github_pat_11AZRSGRY0PeUmuCoZcYkL" +
-    "SlnRwWFlSYQC1kry6jLYeGZ1xOWgUqf7RALcOfQYNn1ZWWOS7Y7SxENp6ok",
+    "github_pat_11AZRSGRY07uZUCWZwxxy7" +
+    "_sPhp8COReVXMcd2ieypcu7QTY0i82RzDYaIRwb4WDQqX7QKGUAMaGVWS1s6",
   per_page: 20, // 默认一页显示几篇文章
   state: "open", //文章状态 open closed all
   github_url: "github.com",
