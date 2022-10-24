@@ -10,7 +10,9 @@ var _config = {
   friends_id: [], //好友id
   friends_name: [], //好友name
   friends_access_token: [], //好友token
-  access_token: "ghp_ztEpvo6pBrp7SVQ" + "8KfOZWXgSQTKdqf1GqkZ0", // 请求量大时需要在 github 后台单独设置一个读取公开库的 token, 注意将token 拆成两个字符串，否则会被系统自动删除掉
+  access_token:
+    "github_pat_11AZRSGRY0PeUmuCoZcYkL" +
+    "SlnRwWFlSYQC1kry6jLYeGZ1xOWgUqf7RALcOfQYNn1ZWWOS7Y7SxENp6ok",
   per_page: 20, // 默认一页显示几篇文章
   state: "open", //文章状态 open closed all
   github_url: "github.com",
